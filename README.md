@@ -27,8 +27,7 @@ Right now everything is on a breadboard, however I plan to design a PCB in the n
 - MOS 6581 (SID)
 - Dangerous Prototypes [XC9572XL CPLD breakout board](http://dangerousprototypes.com/docs/XC9500XL_CPLD_breakout_board)
 - Adafruit [Huzzah ESP8266 breakout](https://www.adafruit.com/products/2471) 
-- LM386 preamp 
-- 7805 LDO
+- LM386 preamp, 7805 LDO, passive components, etc.
 
 Software
 --------
