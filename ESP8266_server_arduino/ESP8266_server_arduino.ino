@@ -10,13 +10,14 @@
  * 
  * by Blark (mark@basegg.io)
  * 
+ * Note:  The RingBuf library requires some editing as it's designed for the original Arduino.
+ * Remove all mention of atomic operations and it works fine on the ESP8266. 
+ * Check out https://github.com/wizard97/ArduinoRingBuffer/issues/2 for more info.
  */
 
 #include <SPI.h>
 #include <ESP8266WiFi.h>
 #include <Ticker.h>
-// Note:  The RingBuf library requires some editing as it's designed for the original Arduino.
-//        Remove all mention of atomic operations and it works fine on the ESP8266. 
 #include <RingBuf.h>  
 
 #define LOW_FRAMES 48   // request more frames when the buffer gets to this number 
