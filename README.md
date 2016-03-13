@@ -22,8 +22,13 @@ The CPLD handles clocking the SID and expanding from SPI to parallel address/dat
 Eventually I would like to implement a buffer in the CPLD and hand off the clocking of the playback to it as well because I think it would be more accurate than the ESP. Newer SID files use SID refresh rates of about 300x faster in order to achieve cool hacky things on the SID. The CPLD would have no problem keeping up with this. Since the ESP is already busy with Wireless, I'm not so sure it's up to the task. 
 
 
-Right now everything is on a breadboard, however I plan to design a PCB in the near future. 
+Right now everything is on a breadboard, however I plan to design a PCB in the near future. Exact hardware used on the breadboard is:
 
+- MOS 6581 (SID)
+- Dangerous Prototypes [XC9572XL CPLD breakout board](http://dangerousprototypes.com/docs/XC9500XL_CPLD_breakout_board)
+- Adafruit [Huzzah ESP8266 breakout](https://www.adafruit.com/products/2471) 
+- LM386 preamp 
+- 7805 LDO
 
 Software
 --------
