@@ -103,7 +103,7 @@ def send_sid(q, ip):
 
     return
 
-def playsid(filename, subtune, playseconds, ip):
+def playsid(filename, subtune=1, playseconds=-1, ip):
     ## Parse file header
     data = [ord(byte) for byte in open(filename, 'rb').read()]
 
