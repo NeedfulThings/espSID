@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -lib "uni9000_ver" -lib "aim_ver" -lib "cpld_ver" -lib "xilinxcorelib_ver" -o "C:/Users/blark/Desktop/ESP8266_SID_Server/cpld/espSID/top_test_isim_beh.exe" -prj "C:/Users/blark/Desktop/ESP8266_SID_Server/cpld/espSID/top_test_beh.prj" "work.top_test" "work.glbl" 
+-intstyle "ise" -incremental -lib "uni9000_ver" -lib "aim_ver" -lib "cpld_ver" -lib "xilinxcorelib_ver" -o "C:/Users/blark/Desktop/ESP8266_SID_Server/cpld/espSID/toptest_isim_beh.exe" -prj "C:/Users/blark/Desktop/ESP8266_SID_Server/cpld/espSID/toptest_beh.prj" "work.toptest" "work.glbl" 

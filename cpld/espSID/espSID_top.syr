@@ -1,0 +1,595 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.08 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.08 secs
+ 
+--> Reading design: espSID_top.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "espSID_top.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "espSID_top"
+Output Format                      : NGC
+Target Device                      : XC9500XL CPLDs
+
+---- Source Options
+Top Module Name                    : espSID_top
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+
+---- Target Options
+Add IO Buffers                     : YES
+MACRO Preserve                     : YES
+XOR Preserve                       : YES
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : Yes
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Verilog 2001                       : YES
+
+---- Other Options
+Clock Enable                       : YES
+wysiwyg                            : NO
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "spi_slave.v" in library work
+Compiling verilog file "sid_glue.v" in library work
+Module <spi_slave> compiled
+Compiling verilog file "ram.v" in library work
+Module <sid_glue> compiled
+Compiling verilog file "clock_divider.v" in library work
+Module <ram> compiled
+Compiling verilog file "espSID_top.v" in library work
+Module <clock_divider> compiled
+Module <espSID_top> compiled
+No errors in compilation
+Analysis of file <"espSID_top.prj"> succeeded.
+ 
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for module <espSID_top> in library <work>.
+
+Analyzing hierarchy for module <clock_divider> in library <work> with parameters.
+	CLK_OUT = "00000000000011110100001001000000"
+	SYS_CLK = "00000001001100010010110100000000"
+
+Analyzing hierarchy for module <ram> in library <work> with parameters.
+	RAM_ADDR_BITS = "00000000000000000000000000000101"
+	RAM_WIDTH = "00000000000000000000000000001000"
+
+Analyzing hierarchy for module <spi_slave> in library <work>.
+
+Analyzing hierarchy for module <sid_glue> in library <work>.
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <espSID_top>.
+Module <espSID_top> is correct for synthesis.
+ 
+Analyzing module <clock_divider> in library <work>.
+	CLK_OUT = 32'sb00000000000011110100001001000000
+	SYS_CLK = 32'sb00000001001100010010110100000000
+Module <clock_divider> is correct for synthesis.
+ 
+Analyzing module <ram> in library <work>.
+	RAM_ADDR_BITS = 32'sb00000000000000000000000000000101
+	RAM_WIDTH = 32'sb00000000000000000000000000001000
+Module <ram> is correct for synthesis.
+ 
+    Set property "RAM_STYLE = DISTRIBUTED" for signal <sid_ram>.
+Analyzing module <spi_slave> in library <work>.
+Module <spi_slave> is correct for synthesis.
+ 
+Analyzing module <sid_glue> in library <work>.
+Module <sid_glue> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+INFO:Xst:2679 - Register <data_rdy> in unit <spi_slave> has a constant value of 1 during circuit operation. The register is replaced by logic.
+
+Synthesizing Unit <clock_divider>.
+    Related source file is "clock_divider.v".
+    Found 1-bit register for signal <sid_clk>.
+    Found 4-bit up counter for signal <clk_counter>.
+    Summary:
+	inferred   1 Counter(s).
+	inferred   1 D-type flip-flop(s).
+Unit <clock_divider> synthesized.
+
+
+Synthesizing Unit <ram>.
+    Related source file is "ram.v".
+    Found 256-bit register for signal <sid_ram>.
+Unit <ram> synthesized.
+
+
+Synthesizing Unit <spi_slave>.
+    Related source file is "spi_slave.v".
+WARNING:Xst:646 - Signal <ss_startmessage> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <ss_endmessage> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <sclk_fallingedge> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 5-bit register for signal <addr>.
+    Found 1-bit register for signal <write_en>.
+    Found 8-bit register for signal <data>.
+    Found 8-bit up counter for signal <bit_cnt>.
+    Found 2-bit register for signal <mosi_r>.
+    Found 3-bit register for signal <sclk_r>.
+    Found 3-bit register for signal <ss_r>.
+    Found 7-bit register for signal <tmp>.
+    Summary:
+	inferred   1 Counter(s).
+	inferred   1 D-type flip-flop(s).
+Unit <spi_slave> synthesized.
+
+
+Synthesizing Unit <sid_glue>.
+    Related source file is "sid_glue.v".
+WARNING:Xst:647 - Input <clk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:1305 - Output <addr> is never assigned. Tied to value 00000.
+WARNING:Xst:647 - Input <data_rdy> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <sid_clk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:1305 - Output <led_d1> is never assigned. Tied to value 0.
+WARNING:Xst:1305 - Output <sid_cs> is never assigned. Tied to value 0.
+Unit <sid_glue> synthesized.
+
+
+Synthesizing Unit <espSID_top>.
+    Related source file is "espSID_top.v".
+WARNING:Xst:647 - Input <rst> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:1306 - Output <sid_rst> is never assigned.
+    Found 5-bit tristate buffer for signal <sid_addr>.
+    Found 8-bit tristate buffer for signal <sid_data>.
+    Summary:
+	inferred  13 Tristate(s).
+Unit <espSID_top> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Counters                                             : 2
+ 4-bit up counter                                      : 1
+ 8-bit up counter                                      : 1
+# Registers                                            : 40
+ 1-bit register                                        : 2
+ 2-bit register                                        : 1
+ 3-bit register                                        : 2
+ 5-bit register                                        : 1
+ 7-bit register                                        : 1
+ 8-bit register                                        : 33
+# Multiplexers                                         : 2
+ 1-bit 8-to-1 multiplexer                              : 1
+ 8-bit 32-to-1 multiplexer                             : 1
+# Tristates                                            : 2
+ 5-bit tristate buffer                                 : 1
+ 8-bit tristate buffer                                 : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Counters                                             : 2
+ 4-bit up counter                                      : 1
+ 8-bit up counter                                      : 1
+# Registers                                            : 2
+ Flip-Flops                                            : 2
+# Multiplexers                                         : 2
+ 1-bit 8-to-1 multiplexer                              : 1
+ 8-bit 32-to-1 multiplexer                             : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:2677 - Node <ss_r_2> of sequential type is unconnected in block <spi_slave>.
+
+Optimizing unit <espSID_top> ...
+
+Optimizing unit <sid_glue> ...
+
+Optimizing unit <ram> ...
+
+Optimizing unit <clock_divider> ...
+  implementation constraint: INIT=r	 : sid_clk
+  implementation constraint: INIT=r	 : clk_counter_3
+  implementation constraint: INIT=r	 : clk_counter_2
+  implementation constraint: INIT=r	 : clk_counter_0
+  implementation constraint: INIT=r	 : clk_counter_1
+
+Optimizing unit <spi_slave> ...
+  implementation constraint: INIT=r	 : bit_cnt_6
+  implementation constraint: INIT=r	 : bit_cnt_7
+  implementation constraint: INIT=r	 : bit_cnt_0
+  implementation constraint: INIT=r	 : bit_cnt_1
+  implementation constraint: INIT=r	 : bit_cnt_4
+  implementation constraint: INIT=r	 : bit_cnt_2
+  implementation constraint: INIT=r	 : bit_cnt_3
+  implementation constraint: INIT=r	 : bit_cnt_5
+WARNING:Xst:2677 - Node <sid_ram_0_7> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_0_6> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_0_5> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_0_4> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_0_3> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_0_2> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_0_1> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_1_7> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_1_6> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_1_5> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_1_4> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_1_3> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_1_2> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_1_1> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_1_0> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_2_7> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_2_6> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_2_5> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_2_4> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_2_3> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_2_2> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_2_1> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_2_0> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_3_7> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_3_6> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_3_5> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_3_4> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_3_3> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_3_2> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_3_1> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_3_0> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_4_7> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_4_6> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_4_5> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_4_4> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_4_3> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_4_2> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_4_1> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_4_0> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_5_7> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_5_6> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_5_5> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_5_4> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_5_3> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_5_2> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_5_1> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_5_0> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_6_7> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_6_6> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_6_5> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_6_4> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_6_3> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_6_2> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_6_1> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_6_0> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_7_7> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_7_6> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_7_5> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_7_4> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_7_3> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_7_2> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_7_1> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_7_0> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_8_7> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_8_6> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_8_5> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_8_4> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_8_3> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_8_2> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_8_1> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_8_0> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_9_7> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_9_6> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_9_5> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_9_4> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_9_3> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_9_2> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_9_1> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_9_0> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_10_7> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_10_6> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_10_5> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_10_4> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_10_3> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_10_2> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_10_1> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_10_0> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_11_7> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_11_6> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_11_5> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_11_4> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_11_3> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_11_2> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_11_1> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_11_0> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_12_7> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_12_6> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_12_5> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_12_4> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_12_3> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_12_2> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_12_1> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_12_0> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_13_7> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_13_6> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_13_5> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_13_4> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_13_3> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_13_2> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_13_1> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_13_0> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_14_7> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_14_6> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_14_5> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_14_4> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_14_3> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_14_2> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_14_1> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_14_0> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_15_7> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_15_6> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_15_5> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_15_4> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_15_3> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_15_2> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_15_1> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_15_0> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_16_7> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_16_6> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_16_5> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_16_4> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_16_3> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_16_2> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_16_1> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_16_0> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_17_7> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_17_6> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_17_5> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_17_4> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_17_3> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_17_2> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_17_1> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_17_0> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_18_7> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_18_6> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_18_5> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_18_4> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_18_3> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_18_2> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_18_1> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_18_0> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_19_7> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_19_6> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_19_5> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_19_4> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_19_3> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_19_2> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_19_1> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_19_0> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_20_7> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_20_6> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_20_5> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_20_4> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_20_3> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_20_2> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_20_1> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_20_0> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_21_7> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_21_6> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_21_5> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_21_4> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_21_3> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_21_2> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_21_1> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_21_0> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_22_7> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_22_6> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_22_5> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_22_4> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_22_3> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_22_2> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_22_1> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_22_0> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_23_7> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_23_6> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_23_5> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_23_4> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_23_3> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_23_2> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_23_1> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_23_0> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_24_7> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_24_6> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_24_5> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_24_4> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_24_3> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_24_2> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_24_1> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_24_0> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_25_7> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_25_6> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_25_5> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_25_4> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_25_3> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_25_2> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_25_1> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_25_0> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_26_7> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_26_6> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_26_5> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_26_4> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_26_3> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_26_2> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_26_1> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_26_0> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_27_7> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_27_6> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_27_5> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_27_4> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_27_3> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_27_2> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_27_1> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_27_0> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_28_7> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_28_6> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_28_5> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_28_4> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_28_3> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_28_2> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_28_1> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_28_0> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_29_7> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_29_6> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_29_5> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_29_4> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_29_3> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_29_2> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_29_1> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_29_0> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_30_7> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_30_6> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_30_5> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_30_4> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_30_3> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_30_2> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_30_1> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_30_0> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_31_7> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_31_6> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_31_5> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_31_4> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_31_3> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_31_2> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_31_1> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <sid_ram_31_0> of sequential type is unconnected in block <ram>.
+WARNING:Xst:2677 - Node <data_7> of sequential type is unconnected in block <spi>.
+WARNING:Xst:2677 - Node <data_6> of sequential type is unconnected in block <spi>.
+WARNING:Xst:2677 - Node <data_5> of sequential type is unconnected in block <spi>.
+WARNING:Xst:2677 - Node <data_4> of sequential type is unconnected in block <spi>.
+WARNING:Xst:2677 - Node <data_3> of sequential type is unconnected in block <spi>.
+WARNING:Xst:2677 - Node <data_2> of sequential type is unconnected in block <spi>.
+WARNING:Xst:2677 - Node <data_1> of sequential type is unconnected in block <spi>.
+WARNING:Xst:2677 - Node <tmp_6> of sequential type is unconnected in block <spi>.
+WARNING:Xst:2677 - Node <tmp_5> of sequential type is unconnected in block <spi>.
+WARNING:Xst:2677 - Node <tmp_4> of sequential type is unconnected in block <spi>.
+WARNING:Xst:2677 - Node <tmp_3> of sequential type is unconnected in block <spi>.
+WARNING:Xst:2677 - Node <tmp_2> of sequential type is unconnected in block <spi>.
+WARNING:Xst:2677 - Node <tmp_1> of sequential type is unconnected in block <spi>.
+WARNING:Xst:2677 - Node <tmp_0> of sequential type is unconnected in block <spi>.
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : espSID_top.ngr
+Top Level Output File Name         : espSID_top
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : Yes
+Target Technology                  : XC9500XL CPLDs
+Macro Preserve                     : YES
+XOR Preserve                       : YES
+Clock Enable                       : YES
+wysiwyg                            : NO
+
+Design Statistics
+# IOs                              : 24
+
+Cell Usage :
+# BELS                             : 74
+#      AND2                        : 29
+#      AND3                        : 1
+#      AND5                        : 1
+#      GND                         : 5
+#      INV                         : 26
+#      OR2                         : 2
+#      XOR2                        : 10
+# FlipFlops/Latches                : 28
+#      FD                          : 11
+#      FDCE                        : 17
+# IO Buffers                       : 22
+#      IBUF                        : 4
+#      OBUF                        : 18
+=========================================================================
+
+
+Total REAL time to Xst completion: 5.00 secs
+Total CPU time to Xst completion: 5.09 secs
+ 
+--> 
+
+Total memory usage is 306552 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :  281 (   0 filtered)
+Number of infos    :    1 (   0 filtered)
+

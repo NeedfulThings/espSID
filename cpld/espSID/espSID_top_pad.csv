@@ -1,0 +1,73 @@
+Release 8.1i - Fit P.20131013
+Copyright(c) 1995-2003 Xilinx Inc. All rights reserved
+
+ 3-18-2016  2:23PM
+
+NOTE: This file is designed to be imported into a spreadsheet program
+such as Microsoft Excel for viewing, printing and sorting. The comma ','
+character is used as the data field separator.
+This file is also designed to support parsing.
+
+Input file:  espSID_top.ngd
+output file: espSID_top_pad.csv
+Part type:   xc9572xl
+Speed grade: -10
+Package:     vq44
+
+Pinout by Pin Number:
+
+-----,-----,-----,-----,-----,-----,-----,-----,-----,-----,
+Pin Number,Signal Name,Pin Usage,Pin Name,Direction,IO Standard,IO Bank Number,{blank},Slew Rate,Termination,{blank},Voltage,Constraint,
+P1,clk,GCK,I/O/GCK3,,,,,,,,,,
+P2,TIE,,I/O,,,,,,,,,,
+P3,sid_clk,O,I/O,OUTPUT,,,,,,,,,
+P4,GND,,GND,,,,,,,,,,
+P5,sid_cs,O,I/O,OUTPUT,,,,,,,,,
+P6,sid_data<3>,O,I/O,OUTPUT,,,,,,,,,
+P7,sid_addr<3>,O,I/O,OUTPUT,,,,,,,,,
+P8,TIE,,I/O,,,,,,,,,,
+P9,TDI,,TDI,,,,,,,,,,
+P10,TMS,,TMS,,,,,,,,,,
+P11,TCK,,TCK,,,,,,,,,,
+P12,sid_addr<1>,O,I/O,OUTPUT,,,,,,,,,
+P13,TIE,,I/O,,,,,,,,,,
+P14,sid_addr<0>,O,I/O,OUTPUT,,,,,,,,,
+P15,VCC,,VCCINT,,,,,,,,,,
+P16,sid_data<6>,O,I/O,OUTPUT,,,,,,,,,
+P17,GND,,GND,,,,,,,,,,
+P18,TIE,,I/O,,,,,,,,,,
+P19,TIE,,I/O,,,,,,,,,,
+P20,sid_addr<4>,O,I/O,OUTPUT,,,,,,,,,
+P21,sid_addr<2>,O,I/O,OUTPUT,,,,,,,,,
+P22,ss,I,I/O,INPUT,,,,,,,,,
+P23,sid_data<7>,O,I/O,OUTPUT,,,,,,,,,
+P24,TDO,,TDO,,,,,,,,,,
+P25,GND,,GND,,,,,,,,,,
+P26,VCC,,VCCIO,,,,,,,,,,
+P27,TIE,,I/O,,,,,,,,,,
+P28,sid_data<4>,O,I/O,OUTPUT,,,,,,,,,
+P29,sid_rw,O,I/O,OUTPUT,,,,,,,,,
+P30,sid_data<5>,O,I/O,OUTPUT,,,,,,,,,
+P31,sid_data<2>,O,I/O,OUTPUT,,,,,,,,,
+P32,sid_data<1>,O,I/O,OUTPUT,,,,,,,,,
+P33,mosi,I,I/O/GSR,INPUT,,,,,,,,,
+P34,sclk,I,I/O/GTS2,INPUT,,,,,,,,,
+P35,VCC,,VCCINT,,,,,,,,,,
+P36,TIE,,I/O/GTS1,,,,,,,,,,
+P37,TIE,,I/O,,,,,,,,,,
+P38,led_d2,O,I/O,OUTPUT,,,,,,,,,
+P39,led_d1,O,I/O,OUTPUT,,,,,,,,,
+P40,TIE,,I/O,,,,,,,,,,
+P41,sid_data<0>,O,I/O,OUTPUT,,,,,,,,,
+P42,TIE,,I/O,,,,,,,,,,
+P43,TIE,,I/O/GCK1,,,,,,,,,,
+P44,TIE,,I/O/GCK2,,,,,,,,,,
+
+To preserve the pinout above for future design iterations in
+Project Navigator simply execute the (Lock Pins) process
+located under the (Implement Design) process in a toolbox named
+(Optional Implementation Tools) or invoke PIN2UCF from the
+command line. The location constraints will be written into your
+specified UCF file
+
+

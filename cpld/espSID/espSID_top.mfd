@@ -1,0 +1,431 @@
+MDF Database:  version 1.0
+MDF_INFO | espSID_top | XC9572XL-10-VQ44
+MACROCELL | 0 | 16 | sid_clk_OBUF
+ATTRIBUTES | 4490050 | 0
+INPUTS | 4 | divider/clk_counter<0>  | divider/clk_counter<1>  | divider/clk_counter<2>  | divider/clk_counter<3>
+INPUTMC | 4 | 0 | 13 | 0 | 17 | 0 | 12 | 0 | 15
+EQ | 4 | 
+   sid_clk.T = Vcc;
+   sid_clk.CLK = clk;	// GCK
+   sid_clk.CE = divider/clk_counter<0> & !divider/clk_counter<1> & 
+	!divider/clk_counter<2> & divider/clk_counter<3>;
+GLOBALS | 1 | 2 | clk
+
+MACROCELL | 0 | 14 | spi/bit_cnt<0>
+ATTRIBUTES | 4358912 | 0
+OUTPUTMC | 15 | 0 | 14 | 2 | 17 | 1 | 15 | 1 | 14 | 1 | 13 | 1 | 12 | 1 | 11 | 1 | 10 | 1 | 0 | 1 | 17 | 1 | 9 | 1 | 8 | 1 | 6 | 1 | 3 | 1 | 2
+INPUTS | 4 | spi/sclk_r<1>  | spi/sclk_r<2>  | led_d2  | spi/bit_cnt<0>
+INPUTMC | 4 | 2 | 11 | 0 | 11 | 1 | 16 | 0 | 14
+EQ | 3 | 
+   spi/bit_cnt<0>.T = spi/bit_cnt<0> & !led_d2
+	# spi/sclk_r<1> & !spi/sclk_r<2> & led_d2;
+   spi/bit_cnt<0>.CLK = clk;	// GCK
+GLOBALS | 1 | 2 | clk
+
+MACROCELL | 2 | 17 | spi/bit_cnt<1>
+ATTRIBUTES | 4358912 | 0
+OUTPUTMC | 14 | 2 | 17 | 1 | 15 | 1 | 14 | 1 | 13 | 1 | 12 | 1 | 11 | 1 | 10 | 1 | 0 | 1 | 17 | 1 | 9 | 1 | 8 | 1 | 6 | 1 | 3 | 1 | 2
+INPUTS | 5 | spi/bit_cnt<0>  | spi/sclk_r<1>  | spi/sclk_r<2>  | led_d2  | spi/bit_cnt<1>
+INPUTMC | 5 | 0 | 14 | 2 | 11 | 0 | 11 | 1 | 16 | 2 | 17
+EQ | 4 | 
+   spi/bit_cnt<1>.T = spi/bit_cnt<1> & !led_d2
+	# spi/bit_cnt<0> & spi/sclk_r<1> & !spi/sclk_r<2> & 
+	led_d2;
+   spi/bit_cnt<1>.CLK = clk;	// GCK
+GLOBALS | 1 | 2 | clk
+
+MACROCELL | 1 | 15 | spi/bit_cnt<2>
+ATTRIBUTES | 4358912 | 0
+OUTPUTMC | 13 | 1 | 15 | 1 | 14 | 1 | 13 | 1 | 12 | 1 | 11 | 1 | 10 | 1 | 0 | 1 | 17 | 1 | 9 | 1 | 8 | 1 | 6 | 1 | 3 | 1 | 2
+INPUTS | 6 | spi/bit_cnt<0>  | spi/bit_cnt<1>  | spi/sclk_r<1>  | spi/sclk_r<2>  | led_d2  | spi/bit_cnt<2>
+INPUTMC | 6 | 0 | 14 | 2 | 17 | 2 | 11 | 0 | 11 | 1 | 16 | 1 | 15
+EQ | 4 | 
+   spi/bit_cnt<2>.T = spi/bit_cnt<2> & !led_d2
+	# spi/bit_cnt<0> & spi/bit_cnt<1> & spi/sclk_r<1> & 
+	!spi/sclk_r<2> & led_d2;
+   spi/bit_cnt<2>.CLK = clk;	// GCK
+GLOBALS | 1 | 2 | clk
+
+MACROCELL | 1 | 14 | spi/bit_cnt<3>
+ATTRIBUTES | 4358912 | 0
+OUTPUTMC | 6 | 1 | 14 | 1 | 13 | 1 | 12 | 1 | 11 | 1 | 10 | 1 | 9
+INPUTS | 7 | spi/bit_cnt<0>  | spi/bit_cnt<1>  | spi/bit_cnt<2>  | spi/sclk_r<1>  | spi/sclk_r<2>  | led_d2  | spi/bit_cnt<3>
+INPUTMC | 7 | 0 | 14 | 2 | 17 | 1 | 15 | 2 | 11 | 0 | 11 | 1 | 16 | 1 | 14
+EQ | 4 | 
+   spi/bit_cnt<3>.T = spi/bit_cnt<3> & !led_d2
+	# spi/bit_cnt<0> & spi/bit_cnt<1> & spi/bit_cnt<2> & 
+	spi/sclk_r<1> & !spi/sclk_r<2> & led_d2;
+   spi/bit_cnt<3>.CLK = clk;	// GCK
+GLOBALS | 1 | 2 | clk
+
+MACROCELL | 1 | 13 | spi/bit_cnt<4>
+ATTRIBUTES | 4358912 | 0
+OUTPUTMC | 5 | 1 | 13 | 1 | 12 | 1 | 11 | 1 | 10 | 1 | 8
+INPUTS | 8 | spi/bit_cnt<0>  | spi/bit_cnt<1>  | spi/bit_cnt<2>  | spi/bit_cnt<3>  | spi/sclk_r<1>  | spi/sclk_r<2>  | led_d2  | spi/bit_cnt<4>
+INPUTMC | 8 | 0 | 14 | 2 | 17 | 1 | 15 | 1 | 14 | 2 | 11 | 0 | 11 | 1 | 16 | 1 | 13
+EQ | 4 | 
+   spi/bit_cnt<4>.T = spi/bit_cnt<4> & !led_d2
+	# spi/bit_cnt<0> & spi/bit_cnt<1> & spi/bit_cnt<2> & 
+	spi/bit_cnt<3> & spi/sclk_r<1> & !spi/sclk_r<2> & led_d2;
+   spi/bit_cnt<4>.CLK = clk;	// GCK
+GLOBALS | 1 | 2 | clk
+
+MACROCELL | 1 | 12 | spi/bit_cnt<5>
+ATTRIBUTES | 4358912 | 0
+OUTPUTMC | 4 | 1 | 12 | 1 | 11 | 1 | 10 | 1 | 6
+INPUTS | 9 | spi/bit_cnt<0>  | spi/bit_cnt<1>  | spi/bit_cnt<2>  | spi/bit_cnt<3>  | spi/bit_cnt<4>  | spi/sclk_r<1>  | spi/sclk_r<2>  | led_d2  | spi/bit_cnt<5>
+INPUTMC | 9 | 0 | 14 | 2 | 17 | 1 | 15 | 1 | 14 | 1 | 13 | 2 | 11 | 0 | 11 | 1 | 16 | 1 | 12
+EQ | 5 | 
+   spi/bit_cnt<5>.T = spi/bit_cnt<5> & !led_d2
+	# spi/bit_cnt<0> & spi/bit_cnt<1> & spi/bit_cnt<2> & 
+	spi/bit_cnt<3> & spi/bit_cnt<4> & spi/sclk_r<1> & !spi/sclk_r<2> & 
+	led_d2;
+   spi/bit_cnt<5>.CLK = clk;	// GCK
+GLOBALS | 1 | 2 | clk
+
+MACROCELL | 1 | 11 | spi/bit_cnt<6>
+ATTRIBUTES | 4358912 | 0
+OUTPUTMC | 3 | 1 | 11 | 1 | 10 | 1 | 3
+INPUTS | 10 | spi/bit_cnt<0>  | spi/bit_cnt<1>  | spi/bit_cnt<2>  | spi/bit_cnt<3>  | spi/bit_cnt<4>  | spi/bit_cnt<5>  | spi/sclk_r<1>  | spi/sclk_r<2>  | led_d2  | spi/bit_cnt<6>
+INPUTMC | 10 | 0 | 14 | 2 | 17 | 1 | 15 | 1 | 14 | 1 | 13 | 1 | 12 | 2 | 11 | 0 | 11 | 1 | 16 | 1 | 11
+EQ | 5 | 
+   spi/bit_cnt<6>.T = spi/bit_cnt<6> & !led_d2
+	# spi/bit_cnt<0> & spi/bit_cnt<1> & spi/bit_cnt<2> & 
+	spi/bit_cnt<3> & spi/bit_cnt<4> & spi/bit_cnt<5> & spi/sclk_r<1> & 
+	!spi/sclk_r<2> & led_d2;
+   spi/bit_cnt<6>.CLK = clk;	// GCK
+GLOBALS | 1 | 2 | clk
+
+MACROCELL | 1 | 10 | spi/bit_cnt<7>
+ATTRIBUTES | 4358912 | 0
+OUTPUTMC | 2 | 1 | 10 | 1 | 2
+INPUTS | 11 | spi/bit_cnt<0>  | spi/bit_cnt<1>  | spi/bit_cnt<2>  | spi/bit_cnt<3>  | spi/bit_cnt<4>  | spi/bit_cnt<5>  | spi/bit_cnt<6>  | spi/sclk_r<1>  | spi/sclk_r<2>  | led_d2  | spi/bit_cnt<7>
+INPUTMC | 11 | 0 | 14 | 2 | 17 | 1 | 15 | 1 | 14 | 1 | 13 | 1 | 12 | 1 | 11 | 2 | 11 | 0 | 11 | 1 | 16 | 1 | 10
+EQ | 5 | 
+   spi/bit_cnt<7>.T = spi/bit_cnt<7> & !led_d2
+	# spi/bit_cnt<0> & spi/bit_cnt<1> & spi/bit_cnt<2> & 
+	spi/bit_cnt<3> & spi/bit_cnt<4> & spi/bit_cnt<5> & spi/bit_cnt<6> & 
+	spi/sclk_r<1> & !spi/sclk_r<2> & led_d2;
+   spi/bit_cnt<7>.CLK = clk;	// GCK
+GLOBALS | 1 | 2 | clk
+
+MACROCELL | 1 | 0 | write_en
+ATTRIBUTES | 8553216 | 0
+OUTPUTMC | 1 | 0 | 5
+INPUTS | 6 | spi/bit_cnt<0>  | spi/bit_cnt<1>  | spi/bit_cnt<2>  | spi/sclk_r<1>  | spi/sclk_r<2>  | led_d2
+INPUTMC | 6 | 0 | 14 | 2 | 17 | 1 | 15 | 2 | 11 | 0 | 11 | 1 | 16
+EQ | 3 | 
+   write_en.D = spi/bit_cnt<0> & spi/bit_cnt<1> & spi/bit_cnt<2> & 
+	spi/sclk_r<1> & !spi/sclk_r<2> & led_d2;
+   write_en.CLK = clk;	// GCK
+GLOBALS | 1 | 2 | clk
+
+MACROCELL | 1 | 17 | ram_in<0>
+ATTRIBUTES | 8553280 | 0
+OUTPUTMC | 1 | 0 | 5
+INPUTS | 7 | spi/mosi_r<1>  | spi/bit_cnt<0>  | spi/bit_cnt<1>  | spi/bit_cnt<2>  | spi/sclk_r<1>  | spi/sclk_r<2>  | led_d2
+INPUTMC | 7 | 2 | 13 | 0 | 14 | 2 | 17 | 1 | 15 | 2 | 11 | 0 | 11 | 1 | 16
+EQ | 4 | 
+   ram_in<0>.D = spi/mosi_r<1>;
+   ram_in<0>.CLK = clk;	// GCK
+   ram_in<0>.CE = spi/bit_cnt<0> & spi/bit_cnt<1> & spi/bit_cnt<2> & 
+	spi/sclk_r<1> & !spi/sclk_r<2> & led_d2;
+GLOBALS | 1 | 2 | clk
+
+MACROCELL | 1 | 9 | write_addr<0>
+ATTRIBUTES | 8553280 | 0
+OUTPUTMC | 1 | 0 | 5
+INPUTS | 7 | spi/bit_cnt<3>  | spi/bit_cnt<0>  | spi/bit_cnt<1>  | spi/bit_cnt<2>  | spi/sclk_r<1>  | spi/sclk_r<2>  | led_d2
+INPUTMC | 7 | 1 | 14 | 0 | 14 | 2 | 17 | 1 | 15 | 2 | 11 | 0 | 11 | 1 | 16
+EQ | 4 | 
+   write_addr<0>.D = spi/bit_cnt<3>;
+   write_addr<0>.CLK = clk;	// GCK
+   write_addr<0>.CE = spi/bit_cnt<0> & spi/bit_cnt<1> & spi/bit_cnt<2> & 
+	spi/sclk_r<1> & !spi/sclk_r<2> & led_d2;
+GLOBALS | 1 | 2 | clk
+
+MACROCELL | 1 | 8 | write_addr<1>
+ATTRIBUTES | 8553280 | 0
+OUTPUTMC | 1 | 0 | 5
+INPUTS | 7 | spi/bit_cnt<4>  | spi/bit_cnt<0>  | spi/bit_cnt<1>  | spi/bit_cnt<2>  | spi/sclk_r<1>  | spi/sclk_r<2>  | led_d2
+INPUTMC | 7 | 1 | 13 | 0 | 14 | 2 | 17 | 1 | 15 | 2 | 11 | 0 | 11 | 1 | 16
+EQ | 4 | 
+   write_addr<1>.D = spi/bit_cnt<4>;
+   write_addr<1>.CLK = clk;	// GCK
+   write_addr<1>.CE = spi/bit_cnt<0> & spi/bit_cnt<1> & spi/bit_cnt<2> & 
+	spi/sclk_r<1> & !spi/sclk_r<2> & led_d2;
+GLOBALS | 1 | 2 | clk
+
+MACROCELL | 1 | 6 | write_addr<2>
+ATTRIBUTES | 8553280 | 0
+OUTPUTMC | 1 | 0 | 5
+INPUTS | 7 | spi/bit_cnt<5>  | spi/bit_cnt<0>  | spi/bit_cnt<1>  | spi/bit_cnt<2>  | spi/sclk_r<1>  | spi/sclk_r<2>  | led_d2
+INPUTMC | 7 | 1 | 12 | 0 | 14 | 2 | 17 | 1 | 15 | 2 | 11 | 0 | 11 | 1 | 16
+EQ | 4 | 
+   write_addr<2>.D = spi/bit_cnt<5>;
+   write_addr<2>.CLK = clk;	// GCK
+   write_addr<2>.CE = spi/bit_cnt<0> & spi/bit_cnt<1> & spi/bit_cnt<2> & 
+	spi/sclk_r<1> & !spi/sclk_r<2> & led_d2;
+GLOBALS | 1 | 2 | clk
+
+MACROCELL | 1 | 3 | write_addr<3>
+ATTRIBUTES | 8553280 | 0
+OUTPUTMC | 1 | 0 | 5
+INPUTS | 7 | spi/bit_cnt<6>  | spi/bit_cnt<0>  | spi/bit_cnt<1>  | spi/bit_cnt<2>  | spi/sclk_r<1>  | spi/sclk_r<2>  | led_d2
+INPUTMC | 7 | 1 | 11 | 0 | 14 | 2 | 17 | 1 | 15 | 2 | 11 | 0 | 11 | 1 | 16
+EQ | 4 | 
+   write_addr<3>.D = spi/bit_cnt<6>;
+   write_addr<3>.CLK = clk;	// GCK
+   write_addr<3>.CE = spi/bit_cnt<0> & spi/bit_cnt<1> & spi/bit_cnt<2> & 
+	spi/sclk_r<1> & !spi/sclk_r<2> & led_d2;
+GLOBALS | 1 | 2 | clk
+
+MACROCELL | 1 | 2 | write_addr<4>
+ATTRIBUTES | 8553280 | 0
+OUTPUTMC | 1 | 0 | 5
+INPUTS | 7 | spi/bit_cnt<7>  | spi/bit_cnt<0>  | spi/bit_cnt<1>  | spi/bit_cnt<2>  | spi/sclk_r<1>  | spi/sclk_r<2>  | led_d2
+INPUTMC | 7 | 1 | 10 | 0 | 14 | 2 | 17 | 1 | 15 | 2 | 11 | 0 | 11 | 1 | 16
+EQ | 4 | 
+   write_addr<4>.D = spi/bit_cnt<7>;
+   write_addr<4>.CLK = clk;	// GCK
+   write_addr<4>.CE = spi/bit_cnt<0> & spi/bit_cnt<1> & spi/bit_cnt<2> & 
+	spi/sclk_r<1> & !spi/sclk_r<2> & led_d2;
+GLOBALS | 1 | 2 | clk
+
+MACROCELL | 0 | 5 | sid_data_0_OBUF
+ATTRIBUTES | 8684354 | 0
+INPUTS | 7 | ram_in<0>  | write_en  | write_addr<0>  | write_addr<1>  | write_addr<2>  | write_addr<3>  | write_addr<4>
+INPUTMC | 7 | 1 | 17 | 1 | 0 | 1 | 9 | 1 | 8 | 1 | 6 | 1 | 3 | 1 | 2
+EQ | 4 | 
+   sid_data<0>.D = ram_in<0>;
+   sid_data<0>.CLK = clk;	// GCK
+   sid_data<0>.CE = write_en & !write_addr<0> & !write_addr<1> & 
+	!write_addr<2> & !write_addr<3> & !write_addr<4>;
+GLOBALS | 1 | 2 | clk
+
+MACROCELL | 0 | 13 | divider/clk_counter<0>
+ATTRIBUTES | 4358912 | 0
+OUTPUTMC | 4 | 0 | 16 | 0 | 17 | 0 | 12 | 0 | 15
+INPUTS | 0
+EQ | 2 | 
+   divider/clk_counter<0>.T = Vcc;
+   divider/clk_counter<0>.CLK = clk;	// GCK
+GLOBALS | 1 | 2 | clk
+
+MACROCELL | 0 | 17 | divider/clk_counter<1>
+ATTRIBUTES | 4358912 | 0
+OUTPUTMC | 4 | 0 | 16 | 0 | 17 | 0 | 12 | 0 | 15
+INPUTS | 4 | divider/clk_counter<0>  | divider/clk_counter<1>  | divider/clk_counter<2>  | divider/clk_counter<3>
+INPUTMC | 4 | 0 | 13 | 0 | 17 | 0 | 12 | 0 | 15
+EQ | 4 | 
+   !divider/clk_counter<1>.T = !divider/clk_counter<0>
+	# !divider/clk_counter<1> & !divider/clk_counter<2> & 
+	divider/clk_counter<3>;
+   divider/clk_counter<1>.CLK = clk;	// GCK
+GLOBALS | 1 | 2 | clk
+
+MACROCELL | 0 | 12 | divider/clk_counter<2>
+ATTRIBUTES | 4358912 | 0
+OUTPUTMC | 3 | 0 | 16 | 0 | 17 | 0 | 15
+INPUTS | 2 | divider/clk_counter<0>  | divider/clk_counter<1>
+INPUTMC | 2 | 0 | 13 | 0 | 17
+EQ | 2 | 
+   divider/clk_counter<2>.T = divider/clk_counter<0> & divider/clk_counter<1>;
+   divider/clk_counter<2>.CLK = clk;	// GCK
+GLOBALS | 1 | 2 | clk
+
+MACROCELL | 0 | 15 | divider/clk_counter<3>
+ATTRIBUTES | 4358912 | 0
+OUTPUTMC | 3 | 0 | 16 | 0 | 17 | 0 | 15
+INPUTS | 4 | divider/clk_counter<0>  | divider/clk_counter<1>  | divider/clk_counter<2>  | divider/clk_counter<3>
+INPUTMC | 4 | 0 | 13 | 0 | 17 | 0 | 12 | 0 | 15
+EQ | 5 | 
+   divider/clk_counter<3>.T = divider/clk_counter<0> & divider/clk_counter<1> & 
+	divider/clk_counter<2>
+	# divider/clk_counter<0> & !divider/clk_counter<1> & 
+	!divider/clk_counter<2> & divider/clk_counter<3>;
+   divider/clk_counter<3>.CLK = clk;	// GCK
+GLOBALS | 1 | 2 | clk
+
+MACROCELL | 2 | 11 | spi/sclk_r<1>
+ATTRIBUTES | 8553216 | 0
+OUTPUTMC | 16 | 0 | 14 | 2 | 17 | 1 | 15 | 1 | 14 | 1 | 13 | 1 | 12 | 1 | 11 | 1 | 10 | 1 | 0 | 1 | 17 | 1 | 9 | 1 | 8 | 1 | 6 | 1 | 3 | 1 | 2 | 0 | 11
+INPUTS | 1 | spi/sclk_r<0>
+INPUTMC | 1 | 2 | 12
+EQ | 2 | 
+   spi/sclk_r<1>.D = spi/sclk_r<0>;
+   spi/sclk_r<1>.CLK = clk;	// GCK
+GLOBALS | 1 | 2 | clk
+
+MACROCELL | 2 | 15 | spi/mosi_r<0>
+ATTRIBUTES | 8553216 | 0
+OUTPUTMC | 1 | 2 | 13
+INPUTS | 1 | mosi
+INPUTP | 1 | 92
+EQ | 2 | 
+   spi/mosi_r<0>.D = mosi;
+   spi/mosi_r<0>.CLK = clk;	// GCK
+GLOBALS | 1 | 2 | clk
+
+MACROCELL | 2 | 13 | spi/mosi_r<1>
+ATTRIBUTES | 8553216 | 0
+OUTPUTMC | 1 | 1 | 17
+INPUTS | 1 | spi/mosi_r<0>
+INPUTMC | 1 | 2 | 15
+EQ | 2 | 
+   spi/mosi_r<1>.D = spi/mosi_r<0>;
+   spi/mosi_r<1>.CLK = clk;	// GCK
+GLOBALS | 1 | 2 | clk
+
+MACROCELL | 2 | 12 | spi/sclk_r<0>
+ATTRIBUTES | 8553216 | 0
+OUTPUTMC | 1 | 2 | 11
+INPUTS | 1 | sclk
+INPUTP | 1 | 3
+EQ | 2 | 
+   spi/sclk_r<0>.D = sclk;
+   spi/sclk_r<0>.CLK = clk;	// GCK
+GLOBALS | 1 | 2 | clk
+
+MACROCELL | 0 | 11 | spi/sclk_r<2>
+ATTRIBUTES | 8553216 | 0
+OUTPUTMC | 15 | 0 | 14 | 2 | 17 | 1 | 15 | 1 | 14 | 1 | 13 | 1 | 12 | 1 | 11 | 1 | 10 | 1 | 0 | 1 | 17 | 1 | 9 | 1 | 8 | 1 | 6 | 1 | 3 | 1 | 2
+INPUTS | 1 | spi/sclk_r<1>
+INPUTMC | 1 | 2 | 11
+EQ | 2 | 
+   spi/sclk_r<2>.D = spi/sclk_r<1>;
+   spi/sclk_r<2>.CLK = clk;	// GCK
+GLOBALS | 1 | 2 | clk
+
+MACROCELL | 2 | 9 | spi/ss_r<0>
+ATTRIBUTES | 8553216 | 0
+OUTPUTMC | 1 | 1 | 16
+INPUTS | 1 | ss
+INPUTP | 1 | 68
+EQ | 2 | 
+   spi/ss_r<0>.D = ss;
+   spi/ss_r<0>.CLK = clk;	// GCK
+GLOBALS | 1 | 2 | clk
+
+MACROCELL | 1 | 16 | led_d2_OBUF
+ATTRIBUTES | 8815366 | 0
+OUTPUTMC | 15 | 0 | 14 | 2 | 17 | 1 | 15 | 1 | 14 | 1 | 13 | 1 | 12 | 1 | 11 | 1 | 10 | 1 | 0 | 1 | 17 | 1 | 9 | 1 | 8 | 1 | 6 | 1 | 3 | 1 | 2
+INPUTS | 1 | spi/ss_r<0>
+INPUTMC | 1 | 2 | 9
+EQ | 2 | 
+   led_d2.D = !spi/ss_r<0>;
+   led_d2.CLK = clk;	// GCK
+GLOBALS | 1 | 2 | clk
+
+MACROCELL | 1 | 1 | led_d1_OBUF
+ATTRIBUTES | 264962 | 0
+INPUTS | 0
+EQ | 1 | 
+   sid_rw = Gnd;
+
+MACROCELL | 2 | 1 | led_d1_OBUF$BUF0
+ATTRIBUTES | 264962 | 0
+INPUTS | 0
+EQ | 1 | 
+   sid_cs = Gnd;
+
+MACROCELL | 3 | 4 | led_d1_OBUF$BUF1
+ATTRIBUTES | 264962 | 0
+INPUTS | 0
+EQ | 1 | 
+   sid_addr<4> = Gnd;
+
+MACROCELL | 2 | 7 | led_d1_OBUF$BUF2
+ATTRIBUTES | 264962 | 0
+INPUTS | 0
+EQ | 1 | 
+   sid_addr<3> = Gnd;
+
+MACROCELL | 3 | 7 | led_d1_OBUF$BUF3
+ATTRIBUTES | 264962 | 0
+INPUTS | 0
+EQ | 1 | 
+   sid_addr<2> = Gnd;
+
+MACROCELL | 2 | 10 | led_d1_OBUF$BUF4
+ATTRIBUTES | 264962 | 0
+INPUTS | 0
+EQ | 1 | 
+   sid_addr<1> = Gnd;
+
+MACROCELL | 2 | 14 | led_d1_OBUF$BUF5
+ATTRIBUTES | 264962 | 0
+INPUTS | 0
+EQ | 1 | 
+   sid_addr<0> = Gnd;
+
+MACROCELL | 0 | 1 | led_d1_OBUF$BUF6
+ATTRIBUTES | 264962 | 0
+INPUTS | 0
+EQ | 1 | 
+   led_d1 = Gnd;
+
+MACROCELL | 3 | 13 | sid_data_1_OBUF
+ATTRIBUTES | 264962 | 0
+INPUTS | 0
+EQ | 1 | 
+   sid_data<7> = Gnd;
+
+MACROCELL | 2 | 16 | sid_data_1_OBUF$BUF0
+ATTRIBUTES | 264962 | 0
+INPUTS | 0
+EQ | 1 | 
+   sid_data<6> = Gnd;
+
+MACROCELL | 1 | 4 | sid_data_1_OBUF$BUF1
+ATTRIBUTES | 264962 | 0
+INPUTS | 0
+EQ | 1 | 
+   sid_data<5> = Gnd;
+
+MACROCELL | 3 | 16 | sid_data_1_OBUF$BUF2
+ATTRIBUTES | 264962 | 0
+INPUTS | 0
+EQ | 1 | 
+   sid_data<4> = Gnd;
+
+MACROCELL | 2 | 4 | sid_data_1_OBUF$BUF3
+ATTRIBUTES | 264962 | 0
+INPUTS | 0
+EQ | 1 | 
+   sid_data<3> = Gnd;
+
+MACROCELL | 1 | 5 | sid_data_1_OBUF$BUF4
+ATTRIBUTES | 264962 | 0
+INPUTS | 0
+EQ | 1 | 
+   sid_data<2> = Gnd;
+
+MACROCELL | 1 | 7 | sid_data_1_OBUF$BUF5
+ATTRIBUTES | 264962 | 0
+INPUTS | 0
+EQ | 1 | 
+   sid_data<1> = Gnd;
+
+PIN | clk | 16384 | 0 | N/A | 24 | 28 | 0 | 16 | 0 | 14 | 2 | 17 | 1 | 15 | 1 | 14 | 1 | 13 | 1 | 12 | 1 | 11 | 1 | 10 | 1 | 0 | 1 | 17 | 1 | 9 | 1 | 8 | 1 | 6 | 1 | 3 | 1 | 2 | 0 | 5 | 0 | 13 | 0 | 17 | 0 | 12 | 0 | 15 | 2 | 11 | 2 | 15 | 2 | 13 | 2 | 12 | 0 | 11 | 2 | 9 | 1 | 16
+PIN | mosi | 64 | 0 | N/A | 92 | 1 | 2 | 15
+PIN | sclk | 64 | 0 | N/A | 3 | 1 | 2 | 12
+PIN | ss | 64 | 0 | N/A | 68 | 1 | 2 | 9
+PIN | sid_clk | 536871040 | 0 | N/A | 27
+PIN | sid_data<0> | 536871040 | 0 | N/A | 13
+PIN | led_d2 | 536871040 | 0 | N/A | 10
+PIN | sid_rw | 536871040 | 0 | N/A | 87
+PIN | sid_cs | 536871040 | 0 | N/A | 29
+PIN | sid_addr<4> | 536871040 | 0 | N/A | 63
+PIN | sid_addr<3> | 536871040 | 0 | N/A | 33
+PIN | sid_addr<2> | 536871040 | 0 | N/A | 65
+PIN | sid_addr<1> | 536871040 | 0 | N/A | 46
+PIN | sid_addr<0> | 536871040 | 0 | N/A | 50
+PIN | led_d1 | 536871040 | 0 | N/A | 11
+PIN | sid_data<7> | 536871040 | 0 | N/A | 72
+PIN | sid_data<6> | 536871040 | 0 | N/A | 52
+PIN | sid_data<5> | 536871040 | 0 | N/A | 88
+PIN | sid_data<4> | 536871040 | 0 | N/A | 83
+PIN | sid_data<3> | 536871040 | 0 | N/A | 31
+PIN | sid_data<2> | 536871040 | 0 | N/A | 89
+PIN | sid_data<1> | 536871040 | 0 | N/A | 90

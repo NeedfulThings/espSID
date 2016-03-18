@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE ibis [
+<!ELEMENT ibis (part, pin+)>
+<!ELEMENT part EMPTY>
+<!ELEMENT pin EMPTY>
+<!ATTLIST part
+  arch   CDATA #REQUIRED
+  device CDATA #REQUIRED
+  spg    CDATA #REQUIRED
+  pkg    CDATA #REQUIRED>
+<!ATTLIST pin
+  nm     CDATA #REQUIRED
+  no     CDATA #REQUIRED
+  iostd  (TTL|LVTTL|LVCMOS2|NA) "NA"
+  sr     (SLOW|FAST|slow|fast) "SLOW"
+  dir    (BIDIR|bidir|INPUT|input|OUTPUT|output) "BIDIR">
+]>
+<ibis><part arch="xc9500xl" device="XC9572XL" pkg="VQ44" spg="-10"/><pin dir="input" nm="clk" no="1"/><pin dir="input" nm="mosi" no="33"/><pin dir="input" nm="sclk" no="34"/><pin dir="input" nm="ss" no="22"/><pin dir="output" nm="sid_clk" no="3" sr="fast"/><pin dir="output" nm="sid_data&lt;0&gt;" no="41" sr="fast"/><pin dir="output" nm="led_d2" no="38" sr="fast"/><pin dir="output" nm="sid_rw" no="29" sr="fast"/><pin dir="output" nm="sid_cs" no="5" sr="fast"/><pin dir="output" nm="sid_addr&lt;4&gt;" no="20" sr="fast"/><pin dir="output" nm="sid_addr&lt;3&gt;" no="7" sr="fast"/><pin dir="output" nm="sid_addr&lt;2&gt;" no="21" sr="fast"/><pin dir="output" nm="sid_addr&lt;1&gt;" no="12" sr="fast"/><pin dir="output" nm="sid_addr&lt;0&gt;" no="14" sr="fast"/><pin dir="output" nm="led_d1" no="39" sr="fast"/><pin dir="output" nm="sid_data&lt;7&gt;" no="23" sr="fast"/><pin dir="output" nm="sid_data&lt;6&gt;" no="16" sr="fast"/><pin dir="output" nm="sid_data&lt;5&gt;" no="30" sr="fast"/><pin dir="output" nm="sid_data&lt;4&gt;" no="28" sr="fast"/><pin dir="output" nm="sid_data&lt;3&gt;" no="6" sr="fast"/><pin dir="output" nm="sid_data&lt;2&gt;" no="31" sr="fast"/><pin dir="output" nm="sid_data&lt;1&gt;" no="32" sr="fast"/></ibis>
