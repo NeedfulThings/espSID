@@ -1,4 +1,4 @@
-Running: fuse.exe -relaunch -intstyle "ise" -incremental -lib "uni9000_ver" -lib "aim_ver" -lib "cpld_ver" -lib "xilinxcorelib_ver" -o "C:/Users/blark/Desktop/ESP8266_SID_Server/cpld/espSID/toptest_isim_beh.exe" -prj "C:/Users/blark/Desktop/ESP8266_SID_Server/cpld/espSID/toptest_beh.prj" "work.toptest" "work.glbl" 
+Running: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib uni9000_ver -lib aim_ver -lib cpld_ver -lib xilinxcorelib_ver -o C:/Users/blark/Desktop/ESP8266_SID_Server/cpld/espSID/newtest_isim_beh.exe -prj C:/Users/blark/Desktop/ESP8266_SID_Server/cpld/espSID/newtest_beh.prj work.newtest work.glbl 
 ISim P.20131013 (signature 0x7708f090)
 Number of CPUs detected in this system: 4
 Turning on mult-threading, number of parallel sub-compilation jobs: 8 
@@ -8,20 +8,20 @@ Analyzing Verilog file "C:/Users/blark/Desktop/ESP8266_SID_Server/cpld/espSID/si
 Analyzing Verilog file "C:/Users/blark/Desktop/ESP8266_SID_Server/cpld/espSID/ram.v" into library work
 Analyzing Verilog file "C:/Users/blark/Desktop/ESP8266_SID_Server/cpld/espSID/clock_divider.v" into library work
 Analyzing Verilog file "C:/Users/blark/Desktop/ESP8266_SID_Server/cpld/espSID/espSID_top.v" into library work
-Analyzing Verilog file "C:/Users/blark/Desktop/ESP8266_SID_Server/cpld/espSID/toptest.v" into library work
+Analyzing Verilog file "C:/Users/blark/Desktop/ESP8266_SID_Server/cpld/espSID/newtest.v" into library work
 Analyzing Verilog file "C:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
 Starting static elaboration
-WARNING:HDLCompiler:1016 - "C:/Users/blark/Desktop/ESP8266_SID_Server/cpld/espSID/toptest.v" Line 18: Port sid_data is not connected to this instance
 Completed static elaboration
 Compiling module clock_divider
 Compiling module ram
 Compiling module spi_slave
 Compiling module sid_glue
 Compiling module espSID_top
-Compiling module toptest
+Compiling module newtest
 Compiling module glbl
 Time Resolution for simulation is 1ps.
+Waiting for 1 sub-compilation(s) to finish...
 Compiled 7 Verilog Units
-Built simulation executable C:/Users/blark/Desktop/ESP8266_SID_Server/cpld/espSID/toptest_isim_beh.exe
-Fuse Memory Usage: 27756 KB
-Fuse CPU Usage: 374 ms
+Built simulation executable C:/Users/blark/Desktop/ESP8266_SID_Server/cpld/espSID/newtest_isim_beh.exe
+Fuse Memory Usage: 27020 KB
+Fuse CPU Usage: 358 ms

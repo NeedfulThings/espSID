@@ -1,20 +1,8 @@
 xst -intstyle ise -ifn "C:/Users/blark/Desktop/ESP8266_SID_Server/cpld/espSID/espSID_top.xst" -ofn "C:/Users/blark/Desktop/ESP8266_SID_Server/cpld/espSID/espSID_top.syr" 
-xst -intstyle ise -ifn "C:/Users/blark/Desktop/ESP8266_SID_Server/cpld/espSID/espSID_top.xst" -ofn "C:/Users/blark/Desktop/ESP8266_SID_Server/cpld/espSID/espSID_top.syr" 
 ngdbuild -intstyle ise -dd _ngo -uc espSID.ucf -p xc9572xl-VQ44-10 espSID_top.ngc espSID_top.ngd  
-xst -intstyle ise -ifn "C:/Users/blark/Desktop/ESP8266_SID_Server/cpld/espSID/espSID_top.xst" -ofn "C:/Users/blark/Desktop/ESP8266_SID_Server/cpld/espSID/espSID_top.syr" 
-ngdbuild -intstyle ise -dd _ngo -uc espSID.ucf -p xc9572xl-VQ44-10 espSID_top.ngc espSID_top.ngd  
-xst -intstyle ise -ifn "C:/Users/blark/Desktop/ESP8266_SID_Server/cpld/espSID/espSID_top.xst" -ofn "C:/Users/blark/Desktop/ESP8266_SID_Server/cpld/espSID/espSID_top.syr" 
-ngdbuild -intstyle ise -dd _ngo -uc espSID.ucf -p xc9572xl-VQ44-10 espSID_top.ngc espSID_top.ngd  
+cpldfit -intstyle ise -p xc9572xl-10-VQ44 -ofmt vhdl -optimize speed -htmlrpt -loc on -slew fast -init low -inputs 54 -pterms 25 -unused float -power std -terminate keeper espSID_top.ngd 
+XSLTProcess espSID_top_build.xml 
 xst -intstyle ise -ifn "C:/Users/blark/Desktop/ESP8266_SID_Server/cpld/espSID/espSID_top.xst" -ofn "C:/Users/blark/Desktop/ESP8266_SID_Server/cpld/espSID/espSID_top.syr" 
 ngdbuild -intstyle ise -dd _ngo -uc espSID.ucf -p xc9572xl-VQ44-10 espSID_top.ngc espSID_top.ngd  
 cpldfit -intstyle ise -p xc9572xl-10-VQ44 -ofmt vhdl -optimize speed -htmlrpt -loc on -slew fast -init low -inputs 54 -pterms 25 -unused float -power std -terminate keeper espSID_top.ngd 
 XSLTProcess espSID_top_build.xml 
-tsim -intstyle ise espSID_top espSID_top.nga 
-taengine -intstyle ise -f espSID_top -w --format html1 -l espSID_top_html/tim/timing_report.htm 
-hprep6 -s IEEE1149 -n espSID_top -i espSID_top 
-xst -intstyle ise -ifn "C:/Users/blark/Desktop/ESP8266_SID_Server/cpld/espSID/espSID_top.xst" -ofn "C:/Users/blark/Desktop/ESP8266_SID_Server/cpld/espSID/espSID_top.syr" 
-ngdbuild -intstyle ise -dd _ngo -uc espSID.ucf -p xc9572xl-VQ44-10 espSID_top.ngc espSID_top.ngd  
-cpldfit -intstyle ise -p xc9572xl-10-VQ44 -ofmt vhdl -optimize speed -htmlrpt -loc on -slew fast -init low -inputs 54 -pterms 25 -unused float -power std -terminate keeper espSID_top.ngd 
-XSLTProcess espSID_top_build.xml 
-tsim -intstyle ise espSID_top espSID_top.nga 
-hprep6 -s IEEE1149 -n espSID_top -i espSID_top 

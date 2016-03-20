@@ -9,10 +9,32 @@ NET "clk"           LOC = P1;
 
 // Dangerous Prototypes (DP) board stuff
 
-NET "rst"           LOC = P18;  
+NET "rst_n"         LOC = P18;  
 NET "led_d1"        LOC = P39;
 NET "led_d2"        LOC = P38;
+
+// SPI
+
+NET "ss"            LOC = P36;
+NET "sclk"          LOC = P34;
+NET "mosi"          LOC = P33;
 
 // SID outputs
 
 NET "sid_clk"       LOC = P3;
+NET "sid_rw"        LOC = P2;
+
+NET "sid_data<0>"   LOC = P5;
+NET "sid_data<1>"   LOC = P6;
+NET "sid_data<2>"   LOC = P7;
+NET "sid_data<3>"   LOC = P8;
+NET "sid_data<4>"   LOC = P12;
+NET "sid_data<5>"   LOC = P13;
+NET "sid_data<6>"   LOC = P14;
+NET "sid_data<7>"   LOC = P16;
+
+NET "sid_addr<0>"   LOC = P40;
+NET "sid_addr<1>"   LOC = P41;
+NET "sid_addr<2>"   LOC = P42;
+NET "sid_addr<3>"   LOC = P43;
+NET "sid_addr<4>"   LOC = P44;

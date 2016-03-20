@@ -1,32 +1,42 @@
  
 cpldfit:  version P.20131013                        Xilinx Inc.
-                                  Fitter Report
-Design Name: espSID_top                          Date:  3-18-2016,  2:23PM
+                                  No Fit Report
+Design Name: espSID_top                          Date:  3-19-2016,  2:08AM
 Device Used: XC9572XL-10-VQ44
-Fitting Status: Successful
+Fitting Status: Design Rule Checking Failed
 
-*************************  Mapped Resource Summary  **************************
+**************************  Errors and Warnings  ***************************
+
+WARNING:Cpld - Unable to retrieve the path to the iSE Project Repository. Will
+   use the default filename of 'espSID_top.ise'.
+ERROR:Cpld:837 - Insufficient number of macrocells. The design needs at least
+   323 but only 72 left after allocating other resources.
+ERROR:Cpld:868 - Cannot fit the design into any of the specified devices with
+   the selected implementation options.
+*************************  Mapped Resource Summary  **************************
+
+No logic has been mapped.
 
 Macrocells     Product Terms    Function Block   Registers      Pins           
 Used/Tot       Used/Tot         Inps Used/Tot    Used/Tot       Used/Tot       
-43 /72  ( 60%) 44  /360  ( 12%) 38 /216 ( 18%)   28 /72  ( 39%) 22 /34  ( 65%)
+17 /72  ( 24%) 284 /360  ( 79%) 276/216 (128%)   7  /72  ( 10%) 22 /34  ( 65%)
 
 ** Function Block Resources **
 
 Function    Mcells      FB Inps     Pterms      IO          
 Block       Used/Tot    Used/Tot    Used/Tot    Used/Tot    
-FB1           9/18       15/54       11/90       4/ 9
-FB2          18/18*      13/54       26/90       7/ 9
-FB3          12/18       10/54        7/90       6/ 9
-FB4           4/18        0/54        0/90       5/ 7
+FB1           8/18       14/54       20/90       9/ 9*
+FB2           1/18        0/54        0/90       4/ 9
+FB3           8/18      262/54*     264/90       9/ 9*
+FB4           0/18        0/54        0/90       0/ 7
              -----       -----       -----      -----    
-             43/72       38/216      44/360     22/34 
+             17/72      276/216     284/360     22/34 
 
 * - Resource is exhausted
 
 ** Global Control Resources **
 
-Signal 'clk' mapped onto global clock net GCK3.
+Global clock net(s) unused.
 Global output enable net(s) unused.
 Global set/reset net(s) unused.
 
@@ -34,511 +44,2321 @@ Global set/reset net(s) unused.
 
 Signal Type    Required     Mapped  |  Pin Type            Used    Total 
 ------------------------------------|------------------------------------
-Input         :    3           3    |  I/O              :    19      28
-Output        :   18          18    |  GCK/IO           :     1       3
-Bidirectional :    0           0    |  GTS/IO           :     1       2
+Input         :    4           4    |  I/O              :    16      28
+Output        :   19          17    |  GCK/IO           :     3       3
+Bidirectional :    0           0    |  GTS/IO           :     2       2
 GCK           :    1           1    |  GSR/IO           :     1       1
 GTS           :    0           0    |
 GSR           :    0           0    |
                  ----        ----
-        Total     22          22
+        Total     24          22
 
-** Power Data **
-
-There are 43 macrocells in high performance mode (MCHP).
-There are 0 macrocells in low power mode (MCLP).
 End of Mapped Resource Summary
-**************************  Errors and Warnings  ***************************
-
-WARNING:Cpld - Unable to retrieve the path to the iSE Project Repository. Will
-   use the default filename of 'espSID_top.ise'.
-WARNING:Cpld:1007 - Removing unused input(s) 'rst'.  The input(s) are unused
-   after optimization. Please verify functionality via simulation.
 *************************  Summary of Mapped Logic  ************************
 
-** 18 Outputs **
+** 17 Outputs **
 
-Signal                  Total Total Loc     Pin  Pin     Pin     Pwr  Slew Reg Init
-Name                    Pts   Inps          No.  Type    Use     Mode Rate State
-led_d1                  0     0     FB1_2   39   I/O     O       STD  FAST 
-sid_data<0>             2     7     FB1_6   41   I/O     O       STD  FAST RESET
-sid_clk                 1     4     FB1_17  3    I/O     O       STD  FAST RESET
-sid_rw                  0     0     FB2_2   29   I/O     O       STD  FAST 
-sid_data<5>             0     0     FB2_5   30   I/O     O       STD  FAST 
-sid_data<2>             0     0     FB2_6   31   I/O     O       STD  FAST 
-sid_data<1>             0     0     FB2_8   32   I/O     O       STD  FAST 
-led_d2                  1     1     FB2_17  38   I/O     O       STD  FAST SET
-sid_cs                  0     0     FB3_2   5    I/O     O       STD  FAST 
-sid_data<3>             0     0     FB3_5   6    I/O     O       STD  FAST 
-sid_addr<3>             0     0     FB3_8   7    I/O     O       STD  FAST 
-sid_addr<1>             0     0     FB3_11  12   I/O     O       STD  FAST 
-sid_addr<0>             0     0     FB3_15  14   I/O     O       STD  FAST 
-sid_data<6>             0     0     FB3_17  16   I/O     O       STD  FAST 
-sid_addr<4>             0     0     FB4_5   20   I/O     O       STD  FAST 
-sid_addr<2>             0     0     FB4_8   21   I/O     O       STD  FAST 
-sid_data<7>             0     0     FB4_14  23   I/O     O       STD  FAST 
-sid_data<4>             0     0     FB4_17  28   I/O     O       STD  FAST 
+Signal                  Total Total Loc     Pin  Pin     Pin     
+Name                    Pts   Inps          No.  Type    Use     
+led_d1                  0     0     FB1_2   39   I/O     O       
+sid_addr<0>             3     6     FB1_5   40   I/O     O       
+sid_addr<1>             3     6     FB1_6   41   I/O     O       
+sid_addr<2>             3     6     FB1_8   42   I/O     O       
+sid_addr<3>             3     6     FB1_9   43   GCK/I/O O       
+sid_addr<4>             3     6     FB1_11  44   GCK/I/O O       
+sid_rw                  3     5     FB1_15  2    I/O     O       
+sid_clk                 2     6     FB1_17  3    I/O     O       
+led_d2                  0     0     FB2_17  38   I/O     O       
+sid_data<0>             33    38    FB3_2   5    I/O     O       
+sid_data<1>             33    38    FB3_5   6    I/O     O       
+sid_data<2>             33    38    FB3_8   7    I/O     O       
+sid_data<3>             33    38    FB3_9   8    I/O     O       
+sid_data<4>             33    38    FB3_11  12   I/O     O       
+sid_data<5>             33    38    FB3_14  13   I/O     O       
+sid_data<6>             33    38    FB3_15  14   I/O     O       
+sid_data<7>             33    38    FB3_17  16   I/O     O       
 
-** 25 Buried Nodes **
-
-Signal                  Total Total Loc     Pwr  Reg Init
-Name                    Pts   Inps          Mode State
-spi/sclk_r<2>           1     1     FB1_12  STD  RESET
-divider/clk_counter<2>  1     2     FB1_13  STD  RESET
-divider/clk_counter<0>  0     0     FB1_14  STD  RESET
-spi/bit_cnt<0>          2     4     FB1_15  STD  RESET
-divider/clk_counter<3>  2     4     FB1_16  STD  RESET
-divider/clk_counter<1>  2     4     FB1_18  STD  RESET
-write_en                1     6     FB2_1   STD  RESET
-write_addr<4>           2     7     FB2_3   STD  RESET
-write_addr<3>           2     7     FB2_4   STD  RESET
-write_addr<2>           2     7     FB2_7   STD  RESET
-write_addr<1>           2     7     FB2_9   STD  RESET
-write_addr<0>           2     7     FB2_10  STD  RESET
-spi/bit_cnt<7>          2     11    FB2_11  STD  RESET
-spi/bit_cnt<6>          2     10    FB2_12  STD  RESET
-spi/bit_cnt<5>          2     9     FB2_13  STD  RESET
-spi/bit_cnt<4>          2     8     FB2_14  STD  RESET
-spi/bit_cnt<3>          2     7     FB2_15  STD  RESET
-spi/bit_cnt<2>          2     6     FB2_16  STD  RESET
-ram_in<0>               2     7     FB2_18  STD  RESET
-spi/ss_r<0>             1     1     FB3_10  STD  RESET
-spi/sclk_r<1>           1     1     FB3_12  STD  RESET
-spi/sclk_r<0>           1     1     FB3_13  STD  RESET
-spi/mosi_r<1>           1     1     FB3_14  STD  RESET
-spi/mosi_r<0>           1     1     FB3_16  STD  RESET
-spi/bit_cnt<1>          2     5     FB3_18  STD  RESET
-
-** 4 Inputs **
+** 5 Inputs **
 
 Signal                  Loc     Pin  Pin     Pin     
 Name                            No.  Type    Use     
 clk                     FB1_14  1    GCK/I/O GCK
 mosi                    FB2_9   33   GSR/I/O I
 sclk                    FB2_11  34   GTS/I/O I
-ss                      FB4_11  22   I/O     I
+ss                      FB2_14  36   GTS/I/O I
+rst_n                   FB3_16  18   I/O     I
 
 Legend:
 Pin No. - ~ - User Assigned
-**************************  Function Block Details  ************************
-Legend:
-Total Pt     - Total product terms used by the macrocell signal
-Imp Pt       - Product terms imported from other macrocells
-Exp Pt       - Product terms exported to other macrocells
-               in direction shown
-Unused Pt    - Unused local product terms remaining in macrocell
-Loc          - Location where logic was mapped in device
-Pin Type/Use - I  - Input             GCK - Global Clock
-               O  - Output            GTS - Global Output Enable
-              (b) - Buried macrocell  GSR - Global Set/Reset
-X            - Signal used as input to the macrocell logic.
-Pin No.      - ~  - User Assigned
-*********************************** FB1  ***********************************
-Number of function block inputs used/remaining:               15/39
-Number of signals used by logic mapping into function block:  15
-Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
-Name                Pt      Pt    Pt  Pt               #    Type    Use
-(unused)              0       0     0   5     FB1_1         (b)     
-led_d1                0       0     0   5     FB1_2   39    I/O     O
-(unused)              0       0     0   5     FB1_3         (b)     
-(unused)              0       0     0   5     FB1_4         (b)     
-(unused)              0       0     0   5     FB1_5   40    I/O     
-sid_data<0>           2       0     0   3     FB1_6   41    I/O     O
-(unused)              0       0     0   5     FB1_7         (b)     
-(unused)              0       0     0   5     FB1_8   42    I/O     
-(unused)              0       0     0   5     FB1_9   43    GCK/I/O 
-(unused)              0       0     0   5     FB1_10        (b)     
-(unused)              0       0     0   5     FB1_11  44    GCK/I/O 
-spi/sclk_r<2>         1       0     0   4     FB1_12        (b)     (b)
-divider/clk_counter<2>
-                      1       0     0   4     FB1_13        (b)     (b)
-divider/clk_counter<0>
-                      0       0     0   5     FB1_14  1     GCK/I/O GCK
-spi/bit_cnt<0>        2       0     0   3     FB1_15  2     I/O     (b)
-divider/clk_counter<3>
-                      2       0     0   3     FB1_16        (b)     (b)
-sid_clk               1       0     0   4     FB1_17  3     I/O     O
-divider/clk_counter<1>
-                      2       0     0   3     FB1_18        (b)     (b)
+*************************  Summary of UnMapped Logic  ************************
 
-Signals Used by Logic in Function Block
-  1: divider/clk_counter<0>   6: ram_in<0>         11: write_addr<1> 
-  2: divider/clk_counter<1>   7: spi/bit_cnt<0>    12: write_addr<2> 
-  3: divider/clk_counter<2>   8: spi/sclk_r<1>     13: write_addr<3> 
-  4: divider/clk_counter<3>   9: spi/sclk_r<2>     14: write_addr<4> 
-  5: led_d2                  10: write_addr<0>     15: write_en 
+** 2 Outputs **
 
-Signal                        1         2         3         4 FB
-Name                0----+----0----+----0----+----0----+----0 Inputs
-led_d1               ........................................ 0
-sid_data<0>          .....X...XXXXXX......................... 7
-spi/sclk_r<2>        .......X................................ 1
-divider/clk_counter<2> 
-                     XX...................................... 2
-divider/clk_counter<0> 
-                     ........................................ 0
-spi/bit_cnt<0>       ....X.XXX............................... 4
-divider/clk_counter<3> 
-                     XXXX.................................... 4
-sid_clk              XXXX.................................... 4
-divider/clk_counter<1> 
-                     XXXX.................................... 4
-                    0----+----1----+----2----+----3----+----4
-                              0         0         0         0
-*********************************** FB2  ***********************************
-Number of function block inputs used/remaining:               13/41
-Number of signals used by logic mapping into function block:  13
-Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
-Name                Pt      Pt    Pt  Pt               #    Type    Use
-write_en              1       0     0   4     FB2_1         (b)     (b)
-sid_rw                0       0     0   5     FB2_2   29    I/O     O
-write_addr<4>         2       0     0   3     FB2_3         (b)     (b)
-write_addr<3>         2       0     0   3     FB2_4         (b)     (b)
-sid_data<5>           0       0     0   5     FB2_5   30    I/O     O
-sid_data<2>           0       0     0   5     FB2_6   31    I/O     O
-write_addr<2>         2       0     0   3     FB2_7         (b)     (b)
-sid_data<1>           0       0     0   5     FB2_8   32    I/O     O
-write_addr<1>         2       0     0   3     FB2_9   33    GSR/I/O I
-write_addr<0>         2       0     0   3     FB2_10        (b)     (b)
-spi/bit_cnt<7>        2       0     0   3     FB2_11  34    GTS/I/O I
-spi/bit_cnt<6>        2       0     0   3     FB2_12        (b)     (b)
-spi/bit_cnt<5>        2       0     0   3     FB2_13        (b)     (b)
-spi/bit_cnt<4>        2       0     0   3     FB2_14  36    GTS/I/O (b)
-spi/bit_cnt<3>        2       0     0   3     FB2_15  37    I/O     (b)
-spi/bit_cnt<2>        2       0     0   3     FB2_16        (b)     (b)
-led_d2                1       0     0   4     FB2_17  38    I/O     O
-ram_in<0>             2       0     0   3     FB2_18        (b)     (b)
+Signal                  Total Total User
+Name                    Pts   Inps  Assignment
+sid_cs                  4     5     
+sid_rst                 2     3     
 
-Signals Used by Logic in Function Block
-  1: led_d2             6: spi/bit_cnt<4>    10: spi/mosi_r<1> 
-  2: spi/bit_cnt<0>     7: spi/bit_cnt<5>    11: spi/sclk_r<1> 
-  3: spi/bit_cnt<1>     8: spi/bit_cnt<6>    12: spi/sclk_r<2> 
-  4: spi/bit_cnt<2>     9: spi/bit_cnt<7>    13: spi/ss_r<0> 
-  5: spi/bit_cnt<3>   
+** 304 Buried Nodes **
 
-Signal                        1         2         3         4 FB
-Name                0----+----0----+----0----+----0----+----0 Inputs
-write_en             XXXX......XX............................ 6
-sid_rw               ........................................ 0
-write_addr<4>        XXXX....X.XX............................ 7
-write_addr<3>        XXXX...X..XX............................ 7
-sid_data<5>          ........................................ 0
-sid_data<2>          ........................................ 0
-write_addr<2>        XXXX..X...XX............................ 7
-sid_data<1>          ........................................ 0
-write_addr<1>        XXXX.X....XX............................ 7
-write_addr<0>        XXXXX.....XX............................ 7
-spi/bit_cnt<7>       XXXXXXXXX.XX............................ 11
-spi/bit_cnt<6>       XXXXXXXX..XX............................ 10
-spi/bit_cnt<5>       XXXXXXX...XX............................ 9
-spi/bit_cnt<4>       XXXXXX....XX............................ 8
-spi/bit_cnt<3>       XXXXX.....XX............................ 7
-spi/bit_cnt<2>       XXXX......XX............................ 6
-led_d2               ............X........................... 1
-ram_in<0>            XXXX.....XXX............................ 7
-                    0----+----1----+----2----+----3----+----4
-                              0         0         0         0
-*********************************** FB3  ***********************************
-Number of function block inputs used/remaining:               10/44
-Number of signals used by logic mapping into function block:  10
-Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
-Name                Pt      Pt    Pt  Pt               #    Type    Use
-(unused)              0       0     0   5     FB3_1         (b)     
-sid_cs                0       0     0   5     FB3_2   5     I/O     O
-(unused)              0       0     0   5     FB3_3         (b)     
-(unused)              0       0     0   5     FB3_4         (b)     
-sid_data<3>           0       0     0   5     FB3_5   6     I/O     O
-(unused)              0       0     0   5     FB3_6         (b)     
-(unused)              0       0     0   5     FB3_7         (b)     
-sid_addr<3>           0       0     0   5     FB3_8   7     I/O     O
-(unused)              0       0     0   5     FB3_9   8     I/O     
-spi/ss_r<0>           1       0     0   4     FB3_10        (b)     (b)
-sid_addr<1>           0       0     0   5     FB3_11  12    I/O     O
-spi/sclk_r<1>         1       0     0   4     FB3_12        (b)     (b)
-spi/sclk_r<0>         1       0     0   4     FB3_13        (b)     (b)
-spi/mosi_r<1>         1       0     0   4     FB3_14  13    I/O     (b)
-sid_addr<0>           0       0     0   5     FB3_15  14    I/O     O
-spi/mosi_r<0>         1       0     0   4     FB3_16  18    I/O     (b)
-sid_data<6>           0       0     0   5     FB3_17  16    I/O     O
-spi/bit_cnt<1>        2       0     0   3     FB3_18        (b)     (b)
+Signal                  Total Total User
+Name                    Pts   Inps  Assignment
+divider/clk_counter<0>  1     1     
+divider/clk_counter<1>  3     5     
+divider/clk_counter<2>  2     3     
+divider/clk_counter<3>  3     5     
+glue/reg_cnt<0>         5     10    
+glue/reg_cnt<1>         6     11    
+glue/reg_cnt<2>         7     12    
+glue/reg_cnt<3>         8     13    
+glue/reg_cnt<4>         9     14    
+glue/running            3     11    
+glue/sid_clk_q          1     2     
+ram/sid_ram_0_0         2     7     
+ram/sid_ram_0_1         2     7     
+ram/sid_ram_0_2         2     7     
+ram/sid_ram_0_3         2     7     
+ram/sid_ram_0_4         2     7     
+ram/sid_ram_0_5         2     7     
+ram/sid_ram_0_6         2     7     
+ram/sid_ram_0_7         2     7     
+ram/sid_ram_10_0        2     7     
+ram/sid_ram_10_1        2     7     
+ram/sid_ram_10_2        2     7     
+ram/sid_ram_10_3        2     7     
+ram/sid_ram_10_4        2     7     
+ram/sid_ram_10_5        2     7     
+ram/sid_ram_10_6        2     7     
+ram/sid_ram_10_7        2     7     
+ram/sid_ram_11_0        2     7     
+ram/sid_ram_11_1        2     7     
+ram/sid_ram_11_2        2     7     
+ram/sid_ram_11_3        2     7     
+ram/sid_ram_11_4        2     7     
+ram/sid_ram_11_5        2     7     
+ram/sid_ram_11_6        2     7     
+ram/sid_ram_11_7        2     7     
+ram/sid_ram_12_0        2     7     
+ram/sid_ram_12_1        2     7     
+ram/sid_ram_12_2        2     7     
+ram/sid_ram_12_3        2     7     
+ram/sid_ram_12_4        2     7     
 
-Signals Used by Logic in Function Block
-  1: led_d2             5: spi/bit_cnt<1>     8: spi/sclk_r<1> 
-  2: mosi               6: spi/mosi_r<0>      9: spi/sclk_r<2> 
-  3: sclk               7: spi/sclk_r<0>     10: ss 
-  4: spi/bit_cnt<0>   
+Signal                  Total Total User
+Name                    Pts   Inps  Assignment
+ram/sid_ram_12_5        2     7     
+ram/sid_ram_12_6        2     7     
+ram/sid_ram_12_7        2     7     
+ram/sid_ram_13_0        2     7     
+ram/sid_ram_13_1        2     7     
+ram/sid_ram_13_2        2     7     
+ram/sid_ram_13_3        2     7     
+ram/sid_ram_13_4        2     7     
+ram/sid_ram_13_5        2     7     
+ram/sid_ram_13_6        2     7     
+ram/sid_ram_13_7        2     7     
+ram/sid_ram_14_0        2     7     
+ram/sid_ram_14_1        2     7     
+ram/sid_ram_14_2        2     7     
+ram/sid_ram_14_3        2     7     
+ram/sid_ram_14_4        2     7     
+ram/sid_ram_14_5        2     7     
+ram/sid_ram_14_6        2     7     
+ram/sid_ram_14_7        2     7     
+ram/sid_ram_15_0        2     7     
+ram/sid_ram_15_1        2     7     
+ram/sid_ram_15_2        2     7     
+ram/sid_ram_15_3        2     7     
+ram/sid_ram_15_4        2     7     
+ram/sid_ram_15_5        2     7     
+ram/sid_ram_15_6        2     7     
+ram/sid_ram_15_7        2     7     
+ram/sid_ram_16_0        2     7     
+ram/sid_ram_16_1        2     7     
+ram/sid_ram_16_2        2     7     
+ram/sid_ram_16_3        2     7     
+ram/sid_ram_16_4        2     7     
+ram/sid_ram_16_5        2     7     
+ram/sid_ram_16_6        2     7     
+ram/sid_ram_16_7        2     7     
+ram/sid_ram_17_0        2     7     
+ram/sid_ram_17_1        2     7     
+ram/sid_ram_17_2        2     7     
+ram/sid_ram_17_3        2     7     
+ram/sid_ram_17_4        2     7     
 
-Signal                        1         2         3         4 FB
-Name                0----+----0----+----0----+----0----+----0 Inputs
-sid_cs               ........................................ 0
-sid_data<3>          ........................................ 0
-sid_addr<3>          ........................................ 0
-spi/ss_r<0>          .........X.............................. 1
-sid_addr<1>          ........................................ 0
-spi/sclk_r<1>        ......X................................. 1
-spi/sclk_r<0>        ..X..................................... 1
-spi/mosi_r<1>        .....X.................................. 1
-sid_addr<0>          ........................................ 0
-spi/mosi_r<0>        .X...................................... 1
-sid_data<6>          ........................................ 0
-spi/bit_cnt<1>       X..XX..XX............................... 5
-                    0----+----1----+----2----+----3----+----4
-                              0         0         0         0
-*********************************** FB4  ***********************************
-Number of function block inputs used/remaining:               0/54
-Number of signals used by logic mapping into function block:  0
-Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
-Name                Pt      Pt    Pt  Pt               #    Type    Use
-(unused)              0       0     0   5     FB4_1         (b)     
-(unused)              0       0     0   5     FB4_2   19    I/O     
-(unused)              0       0     0   5     FB4_3         (b)     
-(unused)              0       0     0   5     FB4_4         (b)     
-sid_addr<4>           0       0     0   5     FB4_5   20    I/O     O
-(unused)              0       0     0   5     FB4_6         (b)     
-(unused)              0       0     0   5     FB4_7         (b)     
-sid_addr<2>           0       0     0   5     FB4_8   21    I/O     O
-(unused)              0       0     0   5     FB4_9         (b)     
-(unused)              0       0     0   5     FB4_10        (b)     
-(unused)              0       0     0   5     FB4_11  22    I/O     I
-(unused)              0       0     0   5     FB4_12        (b)     
-(unused)              0       0     0   5     FB4_13        (b)     
-sid_data<7>           0       0     0   5     FB4_14  23    I/O     O
-(unused)              0       0     0   5     FB4_15  27    I/O     
-(unused)              0       0     0   5     FB4_16        (b)     
-sid_data<4>           0       0     0   5     FB4_17  28    I/O     O
-(unused)              0       0     0   5     FB4_18        (b)     
+Signal                  Total Total User
+Name                    Pts   Inps  Assignment
+ram/sid_ram_17_5        2     7     
+ram/sid_ram_17_6        2     7     
+ram/sid_ram_17_7        2     7     
+ram/sid_ram_18_0        2     7     
+ram/sid_ram_18_1        2     7     
+ram/sid_ram_18_2        2     7     
+ram/sid_ram_18_3        2     7     
+ram/sid_ram_18_4        2     7     
+ram/sid_ram_18_5        2     7     
+ram/sid_ram_18_6        2     7     
+ram/sid_ram_18_7        2     7     
+ram/sid_ram_19_0        2     7     
+ram/sid_ram_19_1        2     7     
+ram/sid_ram_19_2        2     7     
+ram/sid_ram_19_3        2     7     
+ram/sid_ram_19_4        2     7     
+ram/sid_ram_19_5        2     7     
+ram/sid_ram_19_6        2     7     
+ram/sid_ram_19_7        2     7     
+ram/sid_ram_1_0         2     7     
+ram/sid_ram_1_1         2     7     
+ram/sid_ram_1_2         2     7     
+ram/sid_ram_1_3         2     7     
+ram/sid_ram_1_4         2     7     
+ram/sid_ram_1_5         2     7     
+ram/sid_ram_1_6         2     7     
+ram/sid_ram_1_7         2     7     
+ram/sid_ram_20_0        2     7     
+ram/sid_ram_20_1        2     7     
+ram/sid_ram_20_2        2     7     
+ram/sid_ram_20_3        2     7     
+ram/sid_ram_20_4        2     7     
+ram/sid_ram_20_5        2     7     
+ram/sid_ram_20_6        2     7     
+ram/sid_ram_20_7        2     7     
+ram/sid_ram_21_0        2     7     
+ram/sid_ram_21_1        2     7     
+ram/sid_ram_21_2        2     7     
+ram/sid_ram_21_3        2     7     
+ram/sid_ram_21_4        2     7     
 
-Signals Used by Logic in Function Block
+Signal                  Total Total User
+Name                    Pts   Inps  Assignment
+ram/sid_ram_21_5        2     7     
+ram/sid_ram_21_6        2     7     
+ram/sid_ram_21_7        2     7     
+ram/sid_ram_22_0        2     7     
+ram/sid_ram_22_1        2     7     
+ram/sid_ram_22_2        2     7     
+ram/sid_ram_22_3        2     7     
+ram/sid_ram_22_4        2     7     
+ram/sid_ram_22_5        2     7     
+ram/sid_ram_22_6        2     7     
+ram/sid_ram_22_7        2     7     
+ram/sid_ram_23_0        2     7     
+ram/sid_ram_23_1        2     7     
+ram/sid_ram_23_2        2     7     
+ram/sid_ram_23_3        2     7     
+ram/sid_ram_23_4        2     7     
+ram/sid_ram_23_5        2     7     
+ram/sid_ram_23_6        2     7     
+ram/sid_ram_23_7        2     7     
+ram/sid_ram_24_0        2     7     
+ram/sid_ram_24_1        2     7     
+ram/sid_ram_24_2        2     7     
+ram/sid_ram_24_3        2     7     
+ram/sid_ram_24_4        2     7     
+ram/sid_ram_24_5        2     7     
+ram/sid_ram_24_6        2     7     
+ram/sid_ram_24_7        2     7     
+ram/sid_ram_25_0        2     7     
+ram/sid_ram_25_1        2     7     
+ram/sid_ram_25_2        2     7     
+ram/sid_ram_25_3        2     7     
+ram/sid_ram_25_4        2     7     
+ram/sid_ram_25_5        2     7     
+ram/sid_ram_25_6        2     7     
+ram/sid_ram_25_7        2     7     
+ram/sid_ram_26_0        2     7     
+ram/sid_ram_26_1        2     7     
+ram/sid_ram_26_2        2     7     
+ram/sid_ram_26_3        2     7     
+ram/sid_ram_26_4        2     7     
 
-Signal                        1         2         3         4 FB
-Name                0----+----0----+----0----+----0----+----0 Inputs
-sid_addr<4>          ........................................ 0
-sid_addr<2>          ........................................ 0
-sid_data<7>          ........................................ 0
-sid_data<4>          ........................................ 0
-                    0----+----1----+----2----+----3----+----4
-                              0         0         0         0
+Signal                  Total Total User
+Name                    Pts   Inps  Assignment
+ram/sid_ram_26_5        2     7     
+ram/sid_ram_26_6        2     7     
+ram/sid_ram_26_7        2     7     
+ram/sid_ram_27_0        2     7     
+ram/sid_ram_27_1        2     7     
+ram/sid_ram_27_2        2     7     
+ram/sid_ram_27_3        2     7     
+ram/sid_ram_27_4        2     7     
+ram/sid_ram_27_5        2     7     
+ram/sid_ram_27_6        2     7     
+ram/sid_ram_27_7        2     7     
+ram/sid_ram_28_0        2     7     
+ram/sid_ram_28_1        2     7     
+ram/sid_ram_28_2        2     7     
+ram/sid_ram_28_3        2     7     
+ram/sid_ram_28_4        2     7     
+ram/sid_ram_28_5        2     7     
+ram/sid_ram_28_6        2     7     
+ram/sid_ram_28_7        2     7     
+ram/sid_ram_29_0        2     7     
+ram/sid_ram_29_1        2     7     
+ram/sid_ram_29_2        2     7     
+ram/sid_ram_29_3        2     7     
+ram/sid_ram_29_4        2     7     
+ram/sid_ram_29_5        2     7     
+ram/sid_ram_29_6        2     7     
+ram/sid_ram_29_7        2     7     
+ram/sid_ram_2_0         2     7     
+ram/sid_ram_2_1         2     7     
+ram/sid_ram_2_2         2     7     
+ram/sid_ram_2_3         2     7     
+ram/sid_ram_2_4         2     7     
+ram/sid_ram_2_5         2     7     
+ram/sid_ram_2_6         2     7     
+ram/sid_ram_2_7         2     7     
+ram/sid_ram_30_0        2     7     
+ram/sid_ram_30_1        2     7     
+ram/sid_ram_30_2        2     7     
+ram/sid_ram_30_3        2     7     
+ram/sid_ram_30_4        2     7     
+
+Signal                  Total Total User
+Name                    Pts   Inps  Assignment
+ram/sid_ram_30_5        2     7     
+ram/sid_ram_30_6        2     7     
+ram/sid_ram_30_7        2     7     
+ram/sid_ram_31_0        2     7     
+ram/sid_ram_31_1        2     7     
+ram/sid_ram_31_2        2     7     
+ram/sid_ram_31_3        2     7     
+ram/sid_ram_31_4        2     7     
+ram/sid_ram_31_5        2     7     
+ram/sid_ram_31_6        2     7     
+ram/sid_ram_31_7        2     7     
+ram/sid_ram_3_0         2     7     
+ram/sid_ram_3_1         2     7     
+ram/sid_ram_3_2         2     7     
+ram/sid_ram_3_3         2     7     
+ram/sid_ram_3_4         2     7     
+ram/sid_ram_3_5         2     7     
+ram/sid_ram_3_6         2     7     
+ram/sid_ram_3_7         2     7     
+ram/sid_ram_4_0         2     7     
+ram/sid_ram_4_1         2     7     
+ram/sid_ram_4_2         2     7     
+ram/sid_ram_4_3         2     7     
+ram/sid_ram_4_4         2     7     
+ram/sid_ram_4_5         2     7     
+ram/sid_ram_4_6         2     7     
+ram/sid_ram_4_7         2     7     
+ram/sid_ram_5_0         2     7     
+ram/sid_ram_5_1         2     7     
+ram/sid_ram_5_2         2     7     
+ram/sid_ram_5_3         2     7     
+ram/sid_ram_5_4         2     7     
+ram/sid_ram_5_5         2     7     
+ram/sid_ram_5_6         2     7     
+ram/sid_ram_5_7         2     7     
+ram/sid_ram_6_0         2     7     
+ram/sid_ram_6_1         2     7     
+ram/sid_ram_6_2         2     7     
+ram/sid_ram_6_3         2     7     
+ram/sid_ram_6_4         2     7     
+
+Signal                  Total Total User
+Name                    Pts   Inps  Assignment
+ram/sid_ram_6_5         2     7     
+ram/sid_ram_6_6         2     7     
+ram/sid_ram_6_7         2     7     
+ram/sid_ram_7_0         2     7     
+ram/sid_ram_7_1         2     7     
+ram/sid_ram_7_2         2     7     
+ram/sid_ram_7_3         2     7     
+ram/sid_ram_7_4         2     7     
+ram/sid_ram_7_5         2     7     
+ram/sid_ram_7_6         2     7     
+ram/sid_ram_7_7         2     7     
+ram/sid_ram_8_0         2     7     
+ram/sid_ram_8_1         2     7     
+ram/sid_ram_8_2         2     7     
+ram/sid_ram_8_3         2     7     
+ram/sid_ram_8_4         2     7     
+ram/sid_ram_8_5         2     7     
+ram/sid_ram_8_6         2     7     
+ram/sid_ram_8_7         2     7     
+ram/sid_ram_9_0         2     7     
+ram/sid_ram_9_1         2     7     
+ram/sid_ram_9_2         2     7     
+ram/sid_ram_9_3         2     7     
+ram/sid_ram_9_4         2     7     
+ram/sid_ram_9_5         2     7     
+ram/sid_ram_9_6         2     7     
+ram/sid_ram_9_7         2     7     
+ram_in<0>               2     8     
+ram_in<1>               2     8     
+ram_in<2>               2     8     
+ram_in<3>               2     8     
+ram_in<4>               2     8     
+ram_in<5>               2     8     
+ram_in<6>               2     8     
+ram_in<7>               2     8     
+spi/bit_cnt<0>          3     5     
+spi/bit_cnt<1>          3     6     
+spi/bit_cnt<2>          3     7     
+spi/bit_cnt<3>          3     8     
+spi/bit_cnt<4>          3     9     
+
+Signal                  Total Total User
+Name                    Pts   Inps  Assignment
+spi/bit_cnt<5>          3     10    
+spi/bit_cnt<6>          3     11    
+spi/bit_cnt<7>          3     12    
+spi/mosi_r<0>           2     2     
+spi/mosi_r<1>           2     2     
+spi/sclk_r<0>           2     2     
+spi/sclk_r<1>           2     2     
+spi/sclk_r<2>           2     2     
+spi/ss_r<0>             2     2     
+spi/ss_r<1>             2     2     
+spi/ss_r<2>             2     2     
+spi/tmp<0>              7     9     
+spi/tmp<1>              7     9     
+spi/tmp<2>              7     9     
+spi/tmp<3>              7     9     
+spi/tmp<4>              7     9     
+spi/tmp<5>              7     9     
+spi/tmp<6>              7     9     
+write_addr<0>           2     8     
+write_addr<1>           2     8     
+write_addr<2>           2     8     
+write_addr<3>           2     8     
+write_addr<4>           2     8     
+write_en                2     7     
+
 *******************************  Equations  ********************************
 
 ********** Mapped Logic **********
 
-FTCPE_divider/clk_counter0: FTCPE port map (divider/clk_counter(0),'1',clk,'0','0');
-
-FTCPE_divider/clk_counter1: FTCPE port map (divider/clk_counter(1),divider/clk_counter_T(1),clk,'0','0');
-divider/clk_counter_T(1) <= ((NOT divider/clk_counter(0))
-	OR (NOT divider/clk_counter(1) AND NOT divider/clk_counter(2) AND 
-	divider/clk_counter(3)));
-
-FTCPE_divider/clk_counter2: FTCPE port map (divider/clk_counter(2),divider/clk_counter_T(2),clk,'0','0');
-divider/clk_counter_T(2) <= (divider/clk_counter(0) AND divider/clk_counter(1));
-
-FTCPE_divider/clk_counter3: FTCPE port map (divider/clk_counter(3),divider/clk_counter_T(3),clk,'0','0');
-divider/clk_counter_T(3) <= ((divider/clk_counter(0) AND divider/clk_counter(1) AND 
-	divider/clk_counter(2))
-	OR (divider/clk_counter(0) AND NOT divider/clk_counter(1) AND 
-	NOT divider/clk_counter(2) AND divider/clk_counter(3)));
-
 
 led_d1 <= '0';
 
-FDCPE_led_d2: FDCPE port map (led_d2,NOT spi/ss_r(0),clk,'0','0');
+
+led_d2 <= '0';
+
+FDCPE_sid_addr0: FDCPE port map (sid_addr_I(0),glue/reg_cnt(0),clk,'0','0',sid_addr_CE(0));
+sid_addr_CE(0) <= (sid_clk AND glue/running AND NOT glue/sid_clk_q AND rst_n);
+sid_addr(0) <= sid_addr_I(0) when sid_addr_OE(0) = '1' else 'Z';
+sid_addr_OE(0) <= NOT sid_rw;
+
+FDCPE_sid_addr1: FDCPE port map (sid_addr_I(1),glue/reg_cnt(1),clk,'0','0',sid_addr_CE(1));
+sid_addr_CE(1) <= (sid_clk AND glue/running AND NOT glue/sid_clk_q AND rst_n);
+sid_addr(1) <= sid_addr_I(1) when sid_addr_OE(1) = '1' else 'Z';
+sid_addr_OE(1) <= NOT sid_rw;
+
+FDCPE_sid_addr2: FDCPE port map (sid_addr_I(2),glue/reg_cnt(2),clk,'0','0',sid_addr_CE(2));
+sid_addr_CE(2) <= (sid_clk AND glue/running AND NOT glue/sid_clk_q AND rst_n);
+sid_addr(2) <= sid_addr_I(2) when sid_addr_OE(2) = '1' else 'Z';
+sid_addr_OE(2) <= NOT sid_rw;
+
+FDCPE_sid_addr3: FDCPE port map (sid_addr_I(3),glue/reg_cnt(3),clk,'0','0',sid_addr_CE(3));
+sid_addr_CE(3) <= (sid_clk AND glue/running AND NOT glue/sid_clk_q AND rst_n);
+sid_addr(3) <= sid_addr_I(3) when sid_addr_OE(3) = '1' else 'Z';
+sid_addr_OE(3) <= NOT sid_rw;
+
+FDCPE_sid_addr4: FDCPE port map (sid_addr_I(4),glue/reg_cnt(4),clk,'0','0',sid_addr_CE(4));
+sid_addr_CE(4) <= (sid_clk AND glue/running AND NOT glue/sid_clk_q AND rst_n);
+sid_addr(4) <= sid_addr_I(4) when sid_addr_OE(4) = '1' else 'Z';
+sid_addr_OE(4) <= NOT sid_rw;
+
+FTCPE_sid_clk: FTCPE port map (sid_clk,sid_clk_T,clk,'0','0');
+sid_clk_T <= ((divider/clk_counter(0) AND NOT divider/clk_counter(1) AND 
+	NOT divider/clk_counter(2) AND divider/clk_counter(3) AND rst_n)
+	OR (sid_clk AND NOT rst_n));
+
+
+sid_data_I(0) <= ((NOT sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_0_0)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_16_0)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_3_0)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_19_0)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_6_0)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_22_0)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_7_0)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_23_0)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_25_0)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_27_0)
+	OR (sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_28_0)
+	OR (sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_30_0)
+	OR (sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_29_0)
+	OR (sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_31_0)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_9_0)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_11_0)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_12_0)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_14_0)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_13_0)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_15_0)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_1_0)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_17_0)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_4_0)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_20_0)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_5_0)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_21_0)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_2_0)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_18_0)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_24_0)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_26_0)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_8_0)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_10_0));
+sid_data(0) <= sid_data_I(0) when sid_data_OE(0) = '1' else 'Z';
+sid_data_OE(0) <= NOT sid_rw;
+
+
+sid_data_I(1) <= ((NOT sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_0_1)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_16_1)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_3_1)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_19_1)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_6_1)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_22_1)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_7_1)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_23_1)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_25_1)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_27_1)
+	OR (sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_28_1)
+	OR (sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_30_1)
+	OR (sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_29_1)
+	OR (sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_31_1)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_9_1)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_11_1)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_12_1)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_14_1)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_13_1)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_15_1)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_1_1)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_17_1)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_4_1)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_20_1)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_5_1)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_21_1)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_2_1)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_18_1)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_24_1)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_26_1)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_8_1)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_10_1));
+sid_data(1) <= sid_data_I(1) when sid_data_OE(1) = '1' else 'Z';
+sid_data_OE(1) <= NOT sid_rw;
+
+
+sid_data_I(2) <= ((NOT sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_0_2)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_16_2)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_3_2)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_19_2)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_6_2)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_22_2)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_7_2)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_23_2)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_25_2)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_27_2)
+	OR (sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_28_2)
+	OR (sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_30_2)
+	OR (sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_29_2)
+	OR (sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_31_2)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_9_2)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_11_2)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_12_2)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_14_2)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_13_2)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_15_2)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_1_2)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_17_2)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_4_2)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_20_2)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_5_2)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_21_2)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_2_2)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_18_2)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_24_2)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_26_2)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_8_2)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_10_2));
+sid_data(2) <= sid_data_I(2) when sid_data_OE(2) = '1' else 'Z';
+sid_data_OE(2) <= NOT sid_rw;
+
+
+sid_data_I(3) <= ((NOT sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_0_3)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_16_3)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_3_3)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_19_3)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_6_3)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_22_3)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_7_3)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_23_3)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_25_3)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_27_3)
+	OR (sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_28_3)
+	OR (sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_30_3)
+	OR (sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_29_3)
+	OR (sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_31_3)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_9_3)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_11_3)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_12_3)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_14_3)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_13_3)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_15_3)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_1_3)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_17_3)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_4_3)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_20_3)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_5_3)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_21_3)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_2_3)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_18_3)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_24_3)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_26_3)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_8_3)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_10_3));
+sid_data(3) <= sid_data_I(3) when sid_data_OE(3) = '1' else 'Z';
+sid_data_OE(3) <= NOT sid_rw;
+
+
+sid_data_I(4) <= ((NOT sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_0_4)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_16_4)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_3_4)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_19_4)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_6_4)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_22_4)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_7_4)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_23_4)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_25_4)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_27_4)
+	OR (sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_28_4)
+	OR (sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_30_4)
+	OR (sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_29_4)
+	OR (sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_31_4)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_9_4)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_11_4)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_12_4)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_14_4)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_13_4)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_15_4)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_1_4)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_17_4)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_4_4)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_20_4)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_5_4)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_21_4)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_2_4)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_18_4)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_24_4)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_26_4)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_8_4)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_10_4));
+sid_data(4) <= sid_data_I(4) when sid_data_OE(4) = '1' else 'Z';
+sid_data_OE(4) <= NOT sid_rw;
+
+
+sid_data_I(5) <= ((NOT sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_0_5)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_16_5)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_3_5)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_19_5)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_6_5)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_22_5)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_7_5)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_23_5)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_25_5)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_27_5)
+	OR (sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_28_5)
+	OR (sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_30_5)
+	OR (sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_29_5)
+	OR (sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_31_5)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_9_5)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_11_5)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_12_5)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_14_5)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_13_5)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_15_5)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_1_5)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_17_5)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_4_5)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_20_5)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_5_5)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_21_5)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_2_5)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_18_5)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_24_5)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_26_5)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_8_5)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_10_5));
+sid_data(5) <= sid_data_I(5) when sid_data_OE(5) = '1' else 'Z';
+sid_data_OE(5) <= NOT sid_rw;
+
+
+sid_data_I(6) <= ((NOT sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_0_6)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_16_6)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_3_6)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_19_6)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_6_6)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_22_6)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_7_6)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_23_6)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_25_6)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_27_6)
+	OR (sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_28_6)
+	OR (sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_30_6)
+	OR (sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_29_6)
+	OR (sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_31_6)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_9_6)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_11_6)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_12_6)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_14_6)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_13_6)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_15_6)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_1_6)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_17_6)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_4_6)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_20_6)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_5_6)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_21_6)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_2_6)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_18_6)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_24_6)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_26_6)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_8_6)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_10_6));
+sid_data(6) <= sid_data_I(6) when sid_data_OE(6) = '1' else 'Z';
+sid_data_OE(6) <= NOT sid_rw;
+
+
+sid_data_I(7) <= ((NOT sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_0_7)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_16_7)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_3_7)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_19_7)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_6_7)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_22_7)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_7_7)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_23_7)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_25_7)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_27_7)
+	OR (sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_28_7)
+	OR (sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_30_7)
+	OR (sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_31_7)
+	OR (sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_29_7)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_9_7)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_11_7)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_12_7)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_14_7)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_13_7)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND sid_addr(2) AND 
+	sid_addr(1) AND sid_addr(0) AND ram/sid_ram_15_7)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_1_7)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_17_7)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_4_7)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_20_7)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_5_7)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND sid_addr(2) AND 
+	NOT sid_addr(1) AND sid_addr(0) AND ram/sid_ram_21_7)
+	OR (NOT sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_2_7)
+	OR (sid_addr(4) AND NOT sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_18_7)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_24_7)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_26_7)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_8_7)
+	OR (NOT sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	sid_addr(1) AND NOT sid_addr(0) AND ram/sid_ram_10_7));
+sid_data(7) <= sid_data_I(7) when sid_data_OE(7) = '1' else 'Z';
+sid_data_OE(7) <= NOT sid_rw;
+
+FTCPE_sid_rw: FTCPE port map (sid_rw,sid_rw_T,clk,'0','0');
+sid_rw_T <= ((NOT sid_rw AND NOT rst_n)
+	OR (NOT sid_rw AND NOT sid_clk AND glue/running AND 
+	glue/sid_clk_q)
+	OR (sid_rw AND sid_clk AND glue/running AND 
+	NOT glue/sid_clk_q AND rst_n));
+
+********** UnMapped Logic **********
+
+** Outputs **
+
+FDCPE_sid_cs: FDCPE port map (sid_cs,sid_cs_D,clk,'0','0');
+sid_cs_D <= ((NOT sid_rw AND NOT glue/sid_clk_q AND rst_n)
+	OR (NOT sid_rw AND sid_clk AND rst_n)
+	OR (NOT sid_rw AND NOT glue/running AND rst_n)
+	OR (sid_clk AND glue/running AND NOT glue/sid_clk_q AND rst_n));
+
+FDCPE_sid_rst: FDCPE port map (sid_rst,sid_rst_D,clk,'0','0');
+sid_rst_D <= ((sid_rst AND rst_n)
+	OR (NOT glue/running AND rst_n));
+
+** Buried Nodes **
+
+FTCPE_divider/clk_counter0: FTCPE port map (divider/clk_counter(0),'1',clk,'0','0',rst_n);
+
+FTCPE_divider/clk_counter1: FTCPE port map (divider/clk_counter(1),divider/clk_counter_T(1),clk,'0','0',rst_n);
+divider/clk_counter_T(1) <= ((NOT divider/clk_counter(0))
+	OR (NOT divider/clk_counter(1) AND NOT divider/clk_counter(2) AND 
+	divider/clk_counter(3) AND rst_n));
+
+FTCPE_divider/clk_counter2: FTCPE port map (divider/clk_counter(2),divider/clk_counter_T(2),clk,'0','0',rst_n);
+divider/clk_counter_T(2) <= (divider/clk_counter(0) AND divider/clk_counter(1));
+
+FTCPE_divider/clk_counter3: FTCPE port map (divider/clk_counter(3),divider/clk_counter_T(3),clk,'0','0',rst_n);
+divider/clk_counter_T(3) <= ((divider/clk_counter(0) AND divider/clk_counter(1) AND 
+	divider/clk_counter(2))
+	OR (divider/clk_counter(0) AND NOT divider/clk_counter(1) AND 
+	NOT divider/clk_counter(2) AND divider/clk_counter(3) AND rst_n));
+
+FTCPE_glue/reg_cnt0: FTCPE port map (glue/reg_cnt(0),glue/reg_cnt_T(0),clk,'0','0');
+glue/reg_cnt_T(0) <= ((NOT glue/reg_cnt(0) AND NOT rst_n)
+	OR (NOT glue/running AND NOT glue/reg_cnt(0))
+	OR (sid_clk AND glue/running AND rst_n)
+	OR (glue/running AND NOT glue/sid_clk_q AND rst_n)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND glue/running AND rst_n));
+
+FTCPE_glue/reg_cnt1: FTCPE port map (glue/reg_cnt(1),glue/reg_cnt_T(1),clk,'0','0');
+glue/reg_cnt_T(1) <= ((NOT glue/reg_cnt(1) AND NOT rst_n)
+	OR (NOT glue/running AND NOT glue/reg_cnt(1))
+	OR (sid_clk AND glue/running AND rst_n)
+	OR (glue/running AND NOT glue/sid_clk_q AND rst_n)
+	OR (glue/running AND NOT glue/reg_cnt(0) AND rst_n)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND glue/running AND rst_n));
+
+FTCPE_glue/reg_cnt2: FTCPE port map (glue/reg_cnt(2),glue/reg_cnt_T(2),clk,'0','0');
+glue/reg_cnt_T(2) <= ((NOT glue/reg_cnt(2) AND NOT rst_n)
+	OR (NOT glue/running AND NOT glue/reg_cnt(2))
+	OR (sid_clk AND glue/running AND rst_n)
+	OR (glue/running AND NOT glue/sid_clk_q AND rst_n)
+	OR (glue/running AND NOT glue/reg_cnt(0) AND rst_n)
+	OR (glue/running AND NOT glue/reg_cnt(1) AND rst_n)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND glue/running AND rst_n));
+
+FTCPE_glue/reg_cnt3: FTCPE port map (glue/reg_cnt(3),glue/reg_cnt_T(3),clk,'0','0');
+glue/reg_cnt_T(3) <= ((NOT glue/reg_cnt(3) AND NOT rst_n)
+	OR (NOT glue/running AND NOT glue/reg_cnt(3))
+	OR (sid_clk AND glue/running AND rst_n)
+	OR (glue/running AND NOT glue/sid_clk_q AND rst_n)
+	OR (glue/running AND NOT glue/reg_cnt(0) AND rst_n)
+	OR (glue/running AND NOT glue/reg_cnt(1) AND rst_n)
+	OR (glue/running AND NOT glue/reg_cnt(2) AND rst_n)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND glue/running AND rst_n));
+
+FTCPE_glue/reg_cnt4: FTCPE port map (glue/reg_cnt(4),glue/reg_cnt_T(4),clk,'0','0');
+glue/reg_cnt_T(4) <= ((NOT glue/reg_cnt(4) AND NOT rst_n)
+	OR (NOT glue/running AND NOT glue/reg_cnt(4))
+	OR (sid_clk AND glue/running AND rst_n)
+	OR (glue/running AND NOT glue/sid_clk_q AND rst_n)
+	OR (glue/running AND NOT glue/reg_cnt(0) AND rst_n)
+	OR (glue/running AND NOT glue/reg_cnt(1) AND rst_n)
+	OR (glue/running AND NOT glue/reg_cnt(2) AND rst_n)
+	OR (glue/running AND NOT glue/reg_cnt(3) AND rst_n)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND glue/running AND rst_n));
+
+FTCPE_glue/running: FTCPE port map (glue/running,glue/running_T,clk,'0','0');
+glue/running_T <= ((glue/running AND NOT rst_n)
+	OR (spi/ss_r(1) AND NOT glue/running AND NOT spi/ss_r(2) AND 
+	rst_n)
+	OR (sid_addr(4) AND sid_addr(3) AND NOT sid_addr(2) AND 
+	NOT sid_addr(1) AND NOT sid_addr(0) AND NOT sid_clk AND glue/running AND 
+	glue/sid_clk_q));
+
+FDCPE_glue/sid_clk_q: FDCPE port map (glue/sid_clk_q,glue/sid_clk_q_D,clk,'0','0');
+glue/sid_clk_q_D <= (sid_clk AND rst_n);
+
+FDCPE_ram/sid_ram_0_0: FDCPE port map (ram/sid_ram_0_0,ram_in(0),clk,'0','0',ram/sid_ram_0_0_CE);
+ram/sid_ram_0_0_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_0_1: FDCPE port map (ram/sid_ram_0_1,ram_in(1),clk,'0','0',ram/sid_ram_0_1_CE);
+ram/sid_ram_0_1_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_0_2: FDCPE port map (ram/sid_ram_0_2,ram_in(2),clk,'0','0',ram/sid_ram_0_2_CE);
+ram/sid_ram_0_2_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_0_3: FDCPE port map (ram/sid_ram_0_3,ram_in(3),clk,'0','0',ram/sid_ram_0_3_CE);
+ram/sid_ram_0_3_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_0_4: FDCPE port map (ram/sid_ram_0_4,ram_in(4),clk,'0','0',ram/sid_ram_0_4_CE);
+ram/sid_ram_0_4_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_0_5: FDCPE port map (ram/sid_ram_0_5,ram_in(5),clk,'0','0',ram/sid_ram_0_5_CE);
+ram/sid_ram_0_5_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_0_6: FDCPE port map (ram/sid_ram_0_6,ram_in(6),clk,'0','0',ram/sid_ram_0_6_CE);
+ram/sid_ram_0_6_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_0_7: FDCPE port map (ram/sid_ram_0_7,ram_in(7),clk,'0','0',ram/sid_ram_0_7_CE);
+ram/sid_ram_0_7_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_10_0: FDCPE port map (ram/sid_ram_10_0,ram_in(0),clk,'0','0',ram/sid_ram_10_0_CE);
+ram/sid_ram_10_0_CE <= (NOT write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_10_1: FDCPE port map (ram/sid_ram_10_1,ram_in(1),clk,'0','0',ram/sid_ram_10_1_CE);
+ram/sid_ram_10_1_CE <= (NOT write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_10_2: FDCPE port map (ram/sid_ram_10_2,ram_in(2),clk,'0','0',ram/sid_ram_10_2_CE);
+ram/sid_ram_10_2_CE <= (NOT write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_10_3: FDCPE port map (ram/sid_ram_10_3,ram_in(3),clk,'0','0',ram/sid_ram_10_3_CE);
+ram/sid_ram_10_3_CE <= (NOT write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_10_4: FDCPE port map (ram/sid_ram_10_4,ram_in(4),clk,'0','0',ram/sid_ram_10_4_CE);
+ram/sid_ram_10_4_CE <= (NOT write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_10_5: FDCPE port map (ram/sid_ram_10_5,ram_in(5),clk,'0','0',ram/sid_ram_10_5_CE);
+ram/sid_ram_10_5_CE <= (NOT write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_10_6: FDCPE port map (ram/sid_ram_10_6,ram_in(6),clk,'0','0',ram/sid_ram_10_6_CE);
+ram/sid_ram_10_6_CE <= (NOT write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_10_7: FDCPE port map (ram/sid_ram_10_7,ram_in(7),clk,'0','0',ram/sid_ram_10_7_CE);
+ram/sid_ram_10_7_CE <= (NOT write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_11_0: FDCPE port map (ram/sid_ram_11_0,ram_in(0),clk,'0','0',ram/sid_ram_11_0_CE);
+ram/sid_ram_11_0_CE <= (write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_11_1: FDCPE port map (ram/sid_ram_11_1,ram_in(1),clk,'0','0',ram/sid_ram_11_1_CE);
+ram/sid_ram_11_1_CE <= (write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_11_2: FDCPE port map (ram/sid_ram_11_2,ram_in(2),clk,'0','0',ram/sid_ram_11_2_CE);
+ram/sid_ram_11_2_CE <= (write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_11_3: FDCPE port map (ram/sid_ram_11_3,ram_in(3),clk,'0','0',ram/sid_ram_11_3_CE);
+ram/sid_ram_11_3_CE <= (write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_11_4: FDCPE port map (ram/sid_ram_11_4,ram_in(4),clk,'0','0',ram/sid_ram_11_4_CE);
+ram/sid_ram_11_4_CE <= (write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_11_5: FDCPE port map (ram/sid_ram_11_5,ram_in(5),clk,'0','0',ram/sid_ram_11_5_CE);
+ram/sid_ram_11_5_CE <= (write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_11_6: FDCPE port map (ram/sid_ram_11_6,ram_in(6),clk,'0','0',ram/sid_ram_11_6_CE);
+ram/sid_ram_11_6_CE <= (write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_11_7: FDCPE port map (ram/sid_ram_11_7,ram_in(7),clk,'0','0',ram/sid_ram_11_7_CE);
+ram/sid_ram_11_7_CE <= (write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_12_0: FDCPE port map (ram/sid_ram_12_0,ram_in(0),clk,'0','0',ram/sid_ram_12_0_CE);
+ram/sid_ram_12_0_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_12_1: FDCPE port map (ram/sid_ram_12_1,ram_in(1),clk,'0','0',ram/sid_ram_12_1_CE);
+ram/sid_ram_12_1_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_12_2: FDCPE port map (ram/sid_ram_12_2,ram_in(2),clk,'0','0',ram/sid_ram_12_2_CE);
+ram/sid_ram_12_2_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_12_3: FDCPE port map (ram/sid_ram_12_3,ram_in(3),clk,'0','0',ram/sid_ram_12_3_CE);
+ram/sid_ram_12_3_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_12_4: FDCPE port map (ram/sid_ram_12_4,ram_in(4),clk,'0','0',ram/sid_ram_12_4_CE);
+ram/sid_ram_12_4_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_12_5: FDCPE port map (ram/sid_ram_12_5,ram_in(5),clk,'0','0',ram/sid_ram_12_5_CE);
+ram/sid_ram_12_5_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_12_6: FDCPE port map (ram/sid_ram_12_6,ram_in(6),clk,'0','0',ram/sid_ram_12_6_CE);
+ram/sid_ram_12_6_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_12_7: FDCPE port map (ram/sid_ram_12_7,ram_in(7),clk,'0','0',ram/sid_ram_12_7_CE);
+ram/sid_ram_12_7_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_13_0: FDCPE port map (ram/sid_ram_13_0,ram_in(0),clk,'0','0',ram/sid_ram_13_0_CE);
+ram/sid_ram_13_0_CE <= (write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_13_1: FDCPE port map (ram/sid_ram_13_1,ram_in(1),clk,'0','0',ram/sid_ram_13_1_CE);
+ram/sid_ram_13_1_CE <= (write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_13_2: FDCPE port map (ram/sid_ram_13_2,ram_in(2),clk,'0','0',ram/sid_ram_13_2_CE);
+ram/sid_ram_13_2_CE <= (write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_13_3: FDCPE port map (ram/sid_ram_13_3,ram_in(3),clk,'0','0',ram/sid_ram_13_3_CE);
+ram/sid_ram_13_3_CE <= (write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_13_4: FDCPE port map (ram/sid_ram_13_4,ram_in(4),clk,'0','0',ram/sid_ram_13_4_CE);
+ram/sid_ram_13_4_CE <= (write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_13_5: FDCPE port map (ram/sid_ram_13_5,ram_in(5),clk,'0','0',ram/sid_ram_13_5_CE);
+ram/sid_ram_13_5_CE <= (write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_13_6: FDCPE port map (ram/sid_ram_13_6,ram_in(6),clk,'0','0',ram/sid_ram_13_6_CE);
+ram/sid_ram_13_6_CE <= (write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_13_7: FDCPE port map (ram/sid_ram_13_7,ram_in(7),clk,'0','0',ram/sid_ram_13_7_CE);
+ram/sid_ram_13_7_CE <= (write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_14_0: FDCPE port map (ram/sid_ram_14_0,ram_in(0),clk,'0','0',ram/sid_ram_14_0_CE);
+ram/sid_ram_14_0_CE <= (NOT write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_14_1: FDCPE port map (ram/sid_ram_14_1,ram_in(1),clk,'0','0',ram/sid_ram_14_1_CE);
+ram/sid_ram_14_1_CE <= (NOT write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_14_2: FDCPE port map (ram/sid_ram_14_2,ram_in(2),clk,'0','0',ram/sid_ram_14_2_CE);
+ram/sid_ram_14_2_CE <= (NOT write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_14_3: FDCPE port map (ram/sid_ram_14_3,ram_in(3),clk,'0','0',ram/sid_ram_14_3_CE);
+ram/sid_ram_14_3_CE <= (NOT write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_14_4: FDCPE port map (ram/sid_ram_14_4,ram_in(4),clk,'0','0',ram/sid_ram_14_4_CE);
+ram/sid_ram_14_4_CE <= (NOT write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_14_5: FDCPE port map (ram/sid_ram_14_5,ram_in(5),clk,'0','0',ram/sid_ram_14_5_CE);
+ram/sid_ram_14_5_CE <= (NOT write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_14_6: FDCPE port map (ram/sid_ram_14_6,ram_in(6),clk,'0','0',ram/sid_ram_14_6_CE);
+ram/sid_ram_14_6_CE <= (NOT write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_14_7: FDCPE port map (ram/sid_ram_14_7,ram_in(7),clk,'0','0',ram/sid_ram_14_7_CE);
+ram/sid_ram_14_7_CE <= (NOT write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_15_0: FDCPE port map (ram/sid_ram_15_0,ram_in(0),clk,'0','0',ram/sid_ram_15_0_CE);
+ram/sid_ram_15_0_CE <= (write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_15_1: FDCPE port map (ram/sid_ram_15_1,ram_in(1),clk,'0','0',ram/sid_ram_15_1_CE);
+ram/sid_ram_15_1_CE <= (write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_15_2: FDCPE port map (ram/sid_ram_15_2,ram_in(2),clk,'0','0',ram/sid_ram_15_2_CE);
+ram/sid_ram_15_2_CE <= (write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_15_3: FDCPE port map (ram/sid_ram_15_3,ram_in(3),clk,'0','0',ram/sid_ram_15_3_CE);
+ram/sid_ram_15_3_CE <= (write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_15_4: FDCPE port map (ram/sid_ram_15_4,ram_in(4),clk,'0','0',ram/sid_ram_15_4_CE);
+ram/sid_ram_15_4_CE <= (write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_15_5: FDCPE port map (ram/sid_ram_15_5,ram_in(5),clk,'0','0',ram/sid_ram_15_5_CE);
+ram/sid_ram_15_5_CE <= (write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_15_6: FDCPE port map (ram/sid_ram_15_6,ram_in(6),clk,'0','0',ram/sid_ram_15_6_CE);
+ram/sid_ram_15_6_CE <= (write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_15_7: FDCPE port map (ram/sid_ram_15_7,ram_in(7),clk,'0','0',ram/sid_ram_15_7_CE);
+ram/sid_ram_15_7_CE <= (write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_16_0: FDCPE port map (ram/sid_ram_16_0,ram_in(0),clk,'0','0',ram/sid_ram_16_0_CE);
+ram/sid_ram_16_0_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_16_1: FDCPE port map (ram/sid_ram_16_1,ram_in(1),clk,'0','0',ram/sid_ram_16_1_CE);
+ram/sid_ram_16_1_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_16_2: FDCPE port map (ram/sid_ram_16_2,ram_in(2),clk,'0','0',ram/sid_ram_16_2_CE);
+ram/sid_ram_16_2_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_16_3: FDCPE port map (ram/sid_ram_16_3,ram_in(3),clk,'0','0',ram/sid_ram_16_3_CE);
+ram/sid_ram_16_3_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_16_4: FDCPE port map (ram/sid_ram_16_4,ram_in(4),clk,'0','0',ram/sid_ram_16_4_CE);
+ram/sid_ram_16_4_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_16_5: FDCPE port map (ram/sid_ram_16_5,ram_in(5),clk,'0','0',ram/sid_ram_16_5_CE);
+ram/sid_ram_16_5_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_16_6: FDCPE port map (ram/sid_ram_16_6,ram_in(6),clk,'0','0',ram/sid_ram_16_6_CE);
+ram/sid_ram_16_6_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_16_7: FDCPE port map (ram/sid_ram_16_7,ram_in(7),clk,'0','0',ram/sid_ram_16_7_CE);
+ram/sid_ram_16_7_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_17_0: FDCPE port map (ram/sid_ram_17_0,ram_in(0),clk,'0','0',ram/sid_ram_17_0_CE);
+ram/sid_ram_17_0_CE <= (write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_17_1: FDCPE port map (ram/sid_ram_17_1,ram_in(1),clk,'0','0',ram/sid_ram_17_1_CE);
+ram/sid_ram_17_1_CE <= (write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_17_2: FDCPE port map (ram/sid_ram_17_2,ram_in(2),clk,'0','0',ram/sid_ram_17_2_CE);
+ram/sid_ram_17_2_CE <= (write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_17_3: FDCPE port map (ram/sid_ram_17_3,ram_in(3),clk,'0','0',ram/sid_ram_17_3_CE);
+ram/sid_ram_17_3_CE <= (write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_17_4: FDCPE port map (ram/sid_ram_17_4,ram_in(4),clk,'0','0',ram/sid_ram_17_4_CE);
+ram/sid_ram_17_4_CE <= (write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_17_5: FDCPE port map (ram/sid_ram_17_5,ram_in(5),clk,'0','0',ram/sid_ram_17_5_CE);
+ram/sid_ram_17_5_CE <= (write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_17_6: FDCPE port map (ram/sid_ram_17_6,ram_in(6),clk,'0','0',ram/sid_ram_17_6_CE);
+ram/sid_ram_17_6_CE <= (write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_17_7: FDCPE port map (ram/sid_ram_17_7,ram_in(7),clk,'0','0',ram/sid_ram_17_7_CE);
+ram/sid_ram_17_7_CE <= (write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_18_0: FDCPE port map (ram/sid_ram_18_0,ram_in(0),clk,'0','0',ram/sid_ram_18_0_CE);
+ram/sid_ram_18_0_CE <= (NOT write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_18_1: FDCPE port map (ram/sid_ram_18_1,ram_in(1),clk,'0','0',ram/sid_ram_18_1_CE);
+ram/sid_ram_18_1_CE <= (NOT write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_18_2: FDCPE port map (ram/sid_ram_18_2,ram_in(2),clk,'0','0',ram/sid_ram_18_2_CE);
+ram/sid_ram_18_2_CE <= (NOT write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_18_3: FDCPE port map (ram/sid_ram_18_3,ram_in(3),clk,'0','0',ram/sid_ram_18_3_CE);
+ram/sid_ram_18_3_CE <= (NOT write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_18_4: FDCPE port map (ram/sid_ram_18_4,ram_in(4),clk,'0','0',ram/sid_ram_18_4_CE);
+ram/sid_ram_18_4_CE <= (NOT write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_18_5: FDCPE port map (ram/sid_ram_18_5,ram_in(5),clk,'0','0',ram/sid_ram_18_5_CE);
+ram/sid_ram_18_5_CE <= (NOT write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_18_6: FDCPE port map (ram/sid_ram_18_6,ram_in(6),clk,'0','0',ram/sid_ram_18_6_CE);
+ram/sid_ram_18_6_CE <= (NOT write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_18_7: FDCPE port map (ram/sid_ram_18_7,ram_in(7),clk,'0','0',ram/sid_ram_18_7_CE);
+ram/sid_ram_18_7_CE <= (NOT write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_19_0: FDCPE port map (ram/sid_ram_19_0,ram_in(0),clk,'0','0',ram/sid_ram_19_0_CE);
+ram/sid_ram_19_0_CE <= (write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_19_1: FDCPE port map (ram/sid_ram_19_1,ram_in(1),clk,'0','0',ram/sid_ram_19_1_CE);
+ram/sid_ram_19_1_CE <= (write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_19_2: FDCPE port map (ram/sid_ram_19_2,ram_in(2),clk,'0','0',ram/sid_ram_19_2_CE);
+ram/sid_ram_19_2_CE <= (write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_19_3: FDCPE port map (ram/sid_ram_19_3,ram_in(3),clk,'0','0',ram/sid_ram_19_3_CE);
+ram/sid_ram_19_3_CE <= (write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_19_4: FDCPE port map (ram/sid_ram_19_4,ram_in(4),clk,'0','0',ram/sid_ram_19_4_CE);
+ram/sid_ram_19_4_CE <= (write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_19_5: FDCPE port map (ram/sid_ram_19_5,ram_in(5),clk,'0','0',ram/sid_ram_19_5_CE);
+ram/sid_ram_19_5_CE <= (write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_19_6: FDCPE port map (ram/sid_ram_19_6,ram_in(6),clk,'0','0',ram/sid_ram_19_6_CE);
+ram/sid_ram_19_6_CE <= (write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_19_7: FDCPE port map (ram/sid_ram_19_7,ram_in(7),clk,'0','0',ram/sid_ram_19_7_CE);
+ram/sid_ram_19_7_CE <= (write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_1_0: FDCPE port map (ram/sid_ram_1_0,ram_in(0),clk,'0','0',ram/sid_ram_1_0_CE);
+ram/sid_ram_1_0_CE <= (write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_1_1: FDCPE port map (ram/sid_ram_1_1,ram_in(1),clk,'0','0',ram/sid_ram_1_1_CE);
+ram/sid_ram_1_1_CE <= (write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_1_2: FDCPE port map (ram/sid_ram_1_2,ram_in(2),clk,'0','0',ram/sid_ram_1_2_CE);
+ram/sid_ram_1_2_CE <= (write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_1_3: FDCPE port map (ram/sid_ram_1_3,ram_in(3),clk,'0','0',ram/sid_ram_1_3_CE);
+ram/sid_ram_1_3_CE <= (write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_1_4: FDCPE port map (ram/sid_ram_1_4,ram_in(4),clk,'0','0',ram/sid_ram_1_4_CE);
+ram/sid_ram_1_4_CE <= (write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_1_5: FDCPE port map (ram/sid_ram_1_5,ram_in(5),clk,'0','0',ram/sid_ram_1_5_CE);
+ram/sid_ram_1_5_CE <= (write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_1_6: FDCPE port map (ram/sid_ram_1_6,ram_in(6),clk,'0','0',ram/sid_ram_1_6_CE);
+ram/sid_ram_1_6_CE <= (write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_1_7: FDCPE port map (ram/sid_ram_1_7,ram_in(7),clk,'0','0',ram/sid_ram_1_7_CE);
+ram/sid_ram_1_7_CE <= (write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_20_0: FDCPE port map (ram/sid_ram_20_0,ram_in(0),clk,'0','0',ram/sid_ram_20_0_CE);
+ram/sid_ram_20_0_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_20_1: FDCPE port map (ram/sid_ram_20_1,ram_in(1),clk,'0','0',ram/sid_ram_20_1_CE);
+ram/sid_ram_20_1_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_20_2: FDCPE port map (ram/sid_ram_20_2,ram_in(2),clk,'0','0',ram/sid_ram_20_2_CE);
+ram/sid_ram_20_2_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_20_3: FDCPE port map (ram/sid_ram_20_3,ram_in(3),clk,'0','0',ram/sid_ram_20_3_CE);
+ram/sid_ram_20_3_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_20_4: FDCPE port map (ram/sid_ram_20_4,ram_in(4),clk,'0','0',ram/sid_ram_20_4_CE);
+ram/sid_ram_20_4_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_20_5: FDCPE port map (ram/sid_ram_20_5,ram_in(5),clk,'0','0',ram/sid_ram_20_5_CE);
+ram/sid_ram_20_5_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_20_6: FDCPE port map (ram/sid_ram_20_6,ram_in(6),clk,'0','0',ram/sid_ram_20_6_CE);
+ram/sid_ram_20_6_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_20_7: FDCPE port map (ram/sid_ram_20_7,ram_in(7),clk,'0','0',ram/sid_ram_20_7_CE);
+ram/sid_ram_20_7_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_21_0: FDCPE port map (ram/sid_ram_21_0,ram_in(0),clk,'0','0',ram/sid_ram_21_0_CE);
+ram/sid_ram_21_0_CE <= (write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_21_1: FDCPE port map (ram/sid_ram_21_1,ram_in(1),clk,'0','0',ram/sid_ram_21_1_CE);
+ram/sid_ram_21_1_CE <= (write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_21_2: FDCPE port map (ram/sid_ram_21_2,ram_in(2),clk,'0','0',ram/sid_ram_21_2_CE);
+ram/sid_ram_21_2_CE <= (write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_21_3: FDCPE port map (ram/sid_ram_21_3,ram_in(3),clk,'0','0',ram/sid_ram_21_3_CE);
+ram/sid_ram_21_3_CE <= (write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_21_4: FDCPE port map (ram/sid_ram_21_4,ram_in(4),clk,'0','0',ram/sid_ram_21_4_CE);
+ram/sid_ram_21_4_CE <= (write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_21_5: FDCPE port map (ram/sid_ram_21_5,ram_in(5),clk,'0','0',ram/sid_ram_21_5_CE);
+ram/sid_ram_21_5_CE <= (write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_21_6: FDCPE port map (ram/sid_ram_21_6,ram_in(6),clk,'0','0',ram/sid_ram_21_6_CE);
+ram/sid_ram_21_6_CE <= (write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_21_7: FDCPE port map (ram/sid_ram_21_7,ram_in(7),clk,'0','0',ram/sid_ram_21_7_CE);
+ram/sid_ram_21_7_CE <= (write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_22_0: FDCPE port map (ram/sid_ram_22_0,ram_in(0),clk,'0','0',ram/sid_ram_22_0_CE);
+ram/sid_ram_22_0_CE <= (NOT write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_22_1: FDCPE port map (ram/sid_ram_22_1,ram_in(1),clk,'0','0',ram/sid_ram_22_1_CE);
+ram/sid_ram_22_1_CE <= (NOT write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_22_2: FDCPE port map (ram/sid_ram_22_2,ram_in(2),clk,'0','0',ram/sid_ram_22_2_CE);
+ram/sid_ram_22_2_CE <= (NOT write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_22_3: FDCPE port map (ram/sid_ram_22_3,ram_in(3),clk,'0','0',ram/sid_ram_22_3_CE);
+ram/sid_ram_22_3_CE <= (NOT write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_22_4: FDCPE port map (ram/sid_ram_22_4,ram_in(4),clk,'0','0',ram/sid_ram_22_4_CE);
+ram/sid_ram_22_4_CE <= (NOT write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_22_5: FDCPE port map (ram/sid_ram_22_5,ram_in(5),clk,'0','0',ram/sid_ram_22_5_CE);
+ram/sid_ram_22_5_CE <= (NOT write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_22_6: FDCPE port map (ram/sid_ram_22_6,ram_in(6),clk,'0','0',ram/sid_ram_22_6_CE);
+ram/sid_ram_22_6_CE <= (NOT write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_22_7: FDCPE port map (ram/sid_ram_22_7,ram_in(7),clk,'0','0',ram/sid_ram_22_7_CE);
+ram/sid_ram_22_7_CE <= (NOT write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_23_0: FDCPE port map (ram/sid_ram_23_0,ram_in(0),clk,'0','0',ram/sid_ram_23_0_CE);
+ram/sid_ram_23_0_CE <= (write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_23_1: FDCPE port map (ram/sid_ram_23_1,ram_in(1),clk,'0','0',ram/sid_ram_23_1_CE);
+ram/sid_ram_23_1_CE <= (write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_23_2: FDCPE port map (ram/sid_ram_23_2,ram_in(2),clk,'0','0',ram/sid_ram_23_2_CE);
+ram/sid_ram_23_2_CE <= (write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_23_3: FDCPE port map (ram/sid_ram_23_3,ram_in(3),clk,'0','0',ram/sid_ram_23_3_CE);
+ram/sid_ram_23_3_CE <= (write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_23_4: FDCPE port map (ram/sid_ram_23_4,ram_in(4),clk,'0','0',ram/sid_ram_23_4_CE);
+ram/sid_ram_23_4_CE <= (write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_23_5: FDCPE port map (ram/sid_ram_23_5,ram_in(5),clk,'0','0',ram/sid_ram_23_5_CE);
+ram/sid_ram_23_5_CE <= (write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_23_6: FDCPE port map (ram/sid_ram_23_6,ram_in(6),clk,'0','0',ram/sid_ram_23_6_CE);
+ram/sid_ram_23_6_CE <= (write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_23_7: FDCPE port map (ram/sid_ram_23_7,ram_in(7),clk,'0','0',ram/sid_ram_23_7_CE);
+ram/sid_ram_23_7_CE <= (write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_24_0: FDCPE port map (ram/sid_ram_24_0,ram_in(0),clk,'0','0',ram/sid_ram_24_0_CE);
+ram/sid_ram_24_0_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_24_1: FDCPE port map (ram/sid_ram_24_1,ram_in(1),clk,'0','0',ram/sid_ram_24_1_CE);
+ram/sid_ram_24_1_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_24_2: FDCPE port map (ram/sid_ram_24_2,ram_in(2),clk,'0','0',ram/sid_ram_24_2_CE);
+ram/sid_ram_24_2_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_24_3: FDCPE port map (ram/sid_ram_24_3,ram_in(3),clk,'0','0',ram/sid_ram_24_3_CE);
+ram/sid_ram_24_3_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_24_4: FDCPE port map (ram/sid_ram_24_4,ram_in(4),clk,'0','0',ram/sid_ram_24_4_CE);
+ram/sid_ram_24_4_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_24_5: FDCPE port map (ram/sid_ram_24_5,ram_in(5),clk,'0','0',ram/sid_ram_24_5_CE);
+ram/sid_ram_24_5_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_24_6: FDCPE port map (ram/sid_ram_24_6,ram_in(6),clk,'0','0',ram/sid_ram_24_6_CE);
+ram/sid_ram_24_6_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_24_7: FDCPE port map (ram/sid_ram_24_7,ram_in(7),clk,'0','0',ram/sid_ram_24_7_CE);
+ram/sid_ram_24_7_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_25_0: FDCPE port map (ram/sid_ram_25_0,ram_in(0),clk,'0','0',ram/sid_ram_25_0_CE);
+ram/sid_ram_25_0_CE <= (write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_25_1: FDCPE port map (ram/sid_ram_25_1,ram_in(1),clk,'0','0',ram/sid_ram_25_1_CE);
+ram/sid_ram_25_1_CE <= (write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_25_2: FDCPE port map (ram/sid_ram_25_2,ram_in(2),clk,'0','0',ram/sid_ram_25_2_CE);
+ram/sid_ram_25_2_CE <= (write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_25_3: FDCPE port map (ram/sid_ram_25_3,ram_in(3),clk,'0','0',ram/sid_ram_25_3_CE);
+ram/sid_ram_25_3_CE <= (write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_25_4: FDCPE port map (ram/sid_ram_25_4,ram_in(4),clk,'0','0',ram/sid_ram_25_4_CE);
+ram/sid_ram_25_4_CE <= (write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_25_5: FDCPE port map (ram/sid_ram_25_5,ram_in(5),clk,'0','0',ram/sid_ram_25_5_CE);
+ram/sid_ram_25_5_CE <= (write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_25_6: FDCPE port map (ram/sid_ram_25_6,ram_in(6),clk,'0','0',ram/sid_ram_25_6_CE);
+ram/sid_ram_25_6_CE <= (write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_25_7: FDCPE port map (ram/sid_ram_25_7,ram_in(7),clk,'0','0',ram/sid_ram_25_7_CE);
+ram/sid_ram_25_7_CE <= (write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_26_0: FDCPE port map (ram/sid_ram_26_0,ram_in(0),clk,'0','0',ram/sid_ram_26_0_CE);
+ram/sid_ram_26_0_CE <= (NOT write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_26_1: FDCPE port map (ram/sid_ram_26_1,ram_in(1),clk,'0','0',ram/sid_ram_26_1_CE);
+ram/sid_ram_26_1_CE <= (NOT write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_26_2: FDCPE port map (ram/sid_ram_26_2,ram_in(2),clk,'0','0',ram/sid_ram_26_2_CE);
+ram/sid_ram_26_2_CE <= (NOT write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_26_3: FDCPE port map (ram/sid_ram_26_3,ram_in(3),clk,'0','0',ram/sid_ram_26_3_CE);
+ram/sid_ram_26_3_CE <= (NOT write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_26_4: FDCPE port map (ram/sid_ram_26_4,ram_in(4),clk,'0','0',ram/sid_ram_26_4_CE);
+ram/sid_ram_26_4_CE <= (NOT write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_26_5: FDCPE port map (ram/sid_ram_26_5,ram_in(5),clk,'0','0',ram/sid_ram_26_5_CE);
+ram/sid_ram_26_5_CE <= (NOT write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_26_6: FDCPE port map (ram/sid_ram_26_6,ram_in(6),clk,'0','0',ram/sid_ram_26_6_CE);
+ram/sid_ram_26_6_CE <= (NOT write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_26_7: FDCPE port map (ram/sid_ram_26_7,ram_in(7),clk,'0','0',ram/sid_ram_26_7_CE);
+ram/sid_ram_26_7_CE <= (NOT write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_27_0: FDCPE port map (ram/sid_ram_27_0,ram_in(0),clk,'0','0',ram/sid_ram_27_0_CE);
+ram/sid_ram_27_0_CE <= (write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_27_1: FDCPE port map (ram/sid_ram_27_1,ram_in(1),clk,'0','0',ram/sid_ram_27_1_CE);
+ram/sid_ram_27_1_CE <= (write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_27_2: FDCPE port map (ram/sid_ram_27_2,ram_in(2),clk,'0','0',ram/sid_ram_27_2_CE);
+ram/sid_ram_27_2_CE <= (write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_27_3: FDCPE port map (ram/sid_ram_27_3,ram_in(3),clk,'0','0',ram/sid_ram_27_3_CE);
+ram/sid_ram_27_3_CE <= (write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_27_4: FDCPE port map (ram/sid_ram_27_4,ram_in(4),clk,'0','0',ram/sid_ram_27_4_CE);
+ram/sid_ram_27_4_CE <= (write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_27_5: FDCPE port map (ram/sid_ram_27_5,ram_in(5),clk,'0','0',ram/sid_ram_27_5_CE);
+ram/sid_ram_27_5_CE <= (write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_27_6: FDCPE port map (ram/sid_ram_27_6,ram_in(6),clk,'0','0',ram/sid_ram_27_6_CE);
+ram/sid_ram_27_6_CE <= (write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_27_7: FDCPE port map (ram/sid_ram_27_7,ram_in(7),clk,'0','0',ram/sid_ram_27_7_CE);
+ram/sid_ram_27_7_CE <= (write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_28_0: FDCPE port map (ram/sid_ram_28_0,ram_in(0),clk,'0','0',ram/sid_ram_28_0_CE);
+ram/sid_ram_28_0_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_28_1: FDCPE port map (ram/sid_ram_28_1,ram_in(1),clk,'0','0',ram/sid_ram_28_1_CE);
+ram/sid_ram_28_1_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_28_2: FDCPE port map (ram/sid_ram_28_2,ram_in(2),clk,'0','0',ram/sid_ram_28_2_CE);
+ram/sid_ram_28_2_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_28_3: FDCPE port map (ram/sid_ram_28_3,ram_in(3),clk,'0','0',ram/sid_ram_28_3_CE);
+ram/sid_ram_28_3_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_28_4: FDCPE port map (ram/sid_ram_28_4,ram_in(4),clk,'0','0',ram/sid_ram_28_4_CE);
+ram/sid_ram_28_4_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_28_5: FDCPE port map (ram/sid_ram_28_5,ram_in(5),clk,'0','0',ram/sid_ram_28_5_CE);
+ram/sid_ram_28_5_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_28_6: FDCPE port map (ram/sid_ram_28_6,ram_in(6),clk,'0','0',ram/sid_ram_28_6_CE);
+ram/sid_ram_28_6_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_28_7: FDCPE port map (ram/sid_ram_28_7,ram_in(7),clk,'0','0',ram/sid_ram_28_7_CE);
+ram/sid_ram_28_7_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_29_0: FDCPE port map (ram/sid_ram_29_0,ram_in(0),clk,'0','0',ram/sid_ram_29_0_CE);
+ram/sid_ram_29_0_CE <= (write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_29_1: FDCPE port map (ram/sid_ram_29_1,ram_in(1),clk,'0','0',ram/sid_ram_29_1_CE);
+ram/sid_ram_29_1_CE <= (write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_29_2: FDCPE port map (ram/sid_ram_29_2,ram_in(2),clk,'0','0',ram/sid_ram_29_2_CE);
+ram/sid_ram_29_2_CE <= (write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_29_3: FDCPE port map (ram/sid_ram_29_3,ram_in(3),clk,'0','0',ram/sid_ram_29_3_CE);
+ram/sid_ram_29_3_CE <= (write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_29_4: FDCPE port map (ram/sid_ram_29_4,ram_in(4),clk,'0','0',ram/sid_ram_29_4_CE);
+ram/sid_ram_29_4_CE <= (write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_29_5: FDCPE port map (ram/sid_ram_29_5,ram_in(5),clk,'0','0',ram/sid_ram_29_5_CE);
+ram/sid_ram_29_5_CE <= (write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_29_6: FDCPE port map (ram/sid_ram_29_6,ram_in(6),clk,'0','0',ram/sid_ram_29_6_CE);
+ram/sid_ram_29_6_CE <= (write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_29_7: FDCPE port map (ram/sid_ram_29_7,ram_in(7),clk,'0','0',ram/sid_ram_29_7_CE);
+ram/sid_ram_29_7_CE <= (write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_2_0: FDCPE port map (ram/sid_ram_2_0,ram_in(0),clk,'0','0',ram/sid_ram_2_0_CE);
+ram/sid_ram_2_0_CE <= (NOT write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_2_1: FDCPE port map (ram/sid_ram_2_1,ram_in(1),clk,'0','0',ram/sid_ram_2_1_CE);
+ram/sid_ram_2_1_CE <= (NOT write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_2_2: FDCPE port map (ram/sid_ram_2_2,ram_in(2),clk,'0','0',ram/sid_ram_2_2_CE);
+ram/sid_ram_2_2_CE <= (NOT write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_2_3: FDCPE port map (ram/sid_ram_2_3,ram_in(3),clk,'0','0',ram/sid_ram_2_3_CE);
+ram/sid_ram_2_3_CE <= (NOT write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_2_4: FDCPE port map (ram/sid_ram_2_4,ram_in(4),clk,'0','0',ram/sid_ram_2_4_CE);
+ram/sid_ram_2_4_CE <= (NOT write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_2_5: FDCPE port map (ram/sid_ram_2_5,ram_in(5),clk,'0','0',ram/sid_ram_2_5_CE);
+ram/sid_ram_2_5_CE <= (NOT write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_2_6: FDCPE port map (ram/sid_ram_2_6,ram_in(6),clk,'0','0',ram/sid_ram_2_6_CE);
+ram/sid_ram_2_6_CE <= (NOT write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_2_7: FDCPE port map (ram/sid_ram_2_7,ram_in(7),clk,'0','0',ram/sid_ram_2_7_CE);
+ram/sid_ram_2_7_CE <= (NOT write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_30_0: FDCPE port map (ram/sid_ram_30_0,ram_in(0),clk,'0','0',ram/sid_ram_30_0_CE);
+ram/sid_ram_30_0_CE <= (NOT write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_30_1: FDCPE port map (ram/sid_ram_30_1,ram_in(1),clk,'0','0',ram/sid_ram_30_1_CE);
+ram/sid_ram_30_1_CE <= (NOT write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_30_2: FDCPE port map (ram/sid_ram_30_2,ram_in(2),clk,'0','0',ram/sid_ram_30_2_CE);
+ram/sid_ram_30_2_CE <= (NOT write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_30_3: FDCPE port map (ram/sid_ram_30_3,ram_in(3),clk,'0','0',ram/sid_ram_30_3_CE);
+ram/sid_ram_30_3_CE <= (NOT write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_30_4: FDCPE port map (ram/sid_ram_30_4,ram_in(4),clk,'0','0',ram/sid_ram_30_4_CE);
+ram/sid_ram_30_4_CE <= (NOT write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_30_5: FDCPE port map (ram/sid_ram_30_5,ram_in(5),clk,'0','0',ram/sid_ram_30_5_CE);
+ram/sid_ram_30_5_CE <= (NOT write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_30_6: FDCPE port map (ram/sid_ram_30_6,ram_in(6),clk,'0','0',ram/sid_ram_30_6_CE);
+ram/sid_ram_30_6_CE <= (NOT write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_30_7: FDCPE port map (ram/sid_ram_30_7,ram_in(7),clk,'0','0',ram/sid_ram_30_7_CE);
+ram/sid_ram_30_7_CE <= (NOT write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_31_0: FDCPE port map (ram/sid_ram_31_0,ram_in(0),clk,'0','0',ram/sid_ram_31_0_CE);
+ram/sid_ram_31_0_CE <= (write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_31_1: FDCPE port map (ram/sid_ram_31_1,ram_in(1),clk,'0','0',ram/sid_ram_31_1_CE);
+ram/sid_ram_31_1_CE <= (write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_31_2: FDCPE port map (ram/sid_ram_31_2,ram_in(2),clk,'0','0',ram/sid_ram_31_2_CE);
+ram/sid_ram_31_2_CE <= (write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_31_3: FDCPE port map (ram/sid_ram_31_3,ram_in(3),clk,'0','0',ram/sid_ram_31_3_CE);
+ram/sid_ram_31_3_CE <= (write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_31_4: FDCPE port map (ram/sid_ram_31_4,ram_in(4),clk,'0','0',ram/sid_ram_31_4_CE);
+ram/sid_ram_31_4_CE <= (write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_31_5: FDCPE port map (ram/sid_ram_31_5,ram_in(5),clk,'0','0',ram/sid_ram_31_5_CE);
+ram/sid_ram_31_5_CE <= (write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_31_6: FDCPE port map (ram/sid_ram_31_6,ram_in(6),clk,'0','0',ram/sid_ram_31_6_CE);
+ram/sid_ram_31_6_CE <= (write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_31_7: FDCPE port map (ram/sid_ram_31_7,ram_in(7),clk,'0','0',ram/sid_ram_31_7_CE);
+ram/sid_ram_31_7_CE <= (write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	write_addr(3) AND write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_3_0: FDCPE port map (ram/sid_ram_3_0,ram_in(0),clk,'0','0',ram/sid_ram_3_0_CE);
+ram/sid_ram_3_0_CE <= (write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_3_1: FDCPE port map (ram/sid_ram_3_1,ram_in(1),clk,'0','0',ram/sid_ram_3_1_CE);
+ram/sid_ram_3_1_CE <= (write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_3_2: FDCPE port map (ram/sid_ram_3_2,ram_in(2),clk,'0','0',ram/sid_ram_3_2_CE);
+ram/sid_ram_3_2_CE <= (write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_3_3: FDCPE port map (ram/sid_ram_3_3,ram_in(3),clk,'0','0',ram/sid_ram_3_3_CE);
+ram/sid_ram_3_3_CE <= (write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_3_4: FDCPE port map (ram/sid_ram_3_4,ram_in(4),clk,'0','0',ram/sid_ram_3_4_CE);
+ram/sid_ram_3_4_CE <= (write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_3_5: FDCPE port map (ram/sid_ram_3_5,ram_in(5),clk,'0','0',ram/sid_ram_3_5_CE);
+ram/sid_ram_3_5_CE <= (write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_3_6: FDCPE port map (ram/sid_ram_3_6,ram_in(6),clk,'0','0',ram/sid_ram_3_6_CE);
+ram/sid_ram_3_6_CE <= (write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_3_7: FDCPE port map (ram/sid_ram_3_7,ram_in(7),clk,'0','0',ram/sid_ram_3_7_CE);
+ram/sid_ram_3_7_CE <= (write_addr(0) AND write_addr(1) AND NOT write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_4_0: FDCPE port map (ram/sid_ram_4_0,ram_in(0),clk,'0','0',ram/sid_ram_4_0_CE);
+ram/sid_ram_4_0_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_4_1: FDCPE port map (ram/sid_ram_4_1,ram_in(1),clk,'0','0',ram/sid_ram_4_1_CE);
+ram/sid_ram_4_1_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_4_2: FDCPE port map (ram/sid_ram_4_2,ram_in(2),clk,'0','0',ram/sid_ram_4_2_CE);
+ram/sid_ram_4_2_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_4_3: FDCPE port map (ram/sid_ram_4_3,ram_in(3),clk,'0','0',ram/sid_ram_4_3_CE);
+ram/sid_ram_4_3_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_4_4: FDCPE port map (ram/sid_ram_4_4,ram_in(4),clk,'0','0',ram/sid_ram_4_4_CE);
+ram/sid_ram_4_4_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_4_5: FDCPE port map (ram/sid_ram_4_5,ram_in(5),clk,'0','0',ram/sid_ram_4_5_CE);
+ram/sid_ram_4_5_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_4_6: FDCPE port map (ram/sid_ram_4_6,ram_in(6),clk,'0','0',ram/sid_ram_4_6_CE);
+ram/sid_ram_4_6_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_4_7: FDCPE port map (ram/sid_ram_4_7,ram_in(7),clk,'0','0',ram/sid_ram_4_7_CE);
+ram/sid_ram_4_7_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_5_0: FDCPE port map (ram/sid_ram_5_0,ram_in(0),clk,'0','0',ram/sid_ram_5_0_CE);
+ram/sid_ram_5_0_CE <= (write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_5_1: FDCPE port map (ram/sid_ram_5_1,ram_in(1),clk,'0','0',ram/sid_ram_5_1_CE);
+ram/sid_ram_5_1_CE <= (write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_5_2: FDCPE port map (ram/sid_ram_5_2,ram_in(2),clk,'0','0',ram/sid_ram_5_2_CE);
+ram/sid_ram_5_2_CE <= (write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_5_3: FDCPE port map (ram/sid_ram_5_3,ram_in(3),clk,'0','0',ram/sid_ram_5_3_CE);
+ram/sid_ram_5_3_CE <= (write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_5_4: FDCPE port map (ram/sid_ram_5_4,ram_in(4),clk,'0','0',ram/sid_ram_5_4_CE);
+ram/sid_ram_5_4_CE <= (write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_5_5: FDCPE port map (ram/sid_ram_5_5,ram_in(5),clk,'0','0',ram/sid_ram_5_5_CE);
+ram/sid_ram_5_5_CE <= (write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_5_6: FDCPE port map (ram/sid_ram_5_6,ram_in(6),clk,'0','0',ram/sid_ram_5_6_CE);
+ram/sid_ram_5_6_CE <= (write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_5_7: FDCPE port map (ram/sid_ram_5_7,ram_in(7),clk,'0','0',ram/sid_ram_5_7_CE);
+ram/sid_ram_5_7_CE <= (write_addr(0) AND NOT write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_6_0: FDCPE port map (ram/sid_ram_6_0,ram_in(0),clk,'0','0',ram/sid_ram_6_0_CE);
+ram/sid_ram_6_0_CE <= (NOT write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_6_1: FDCPE port map (ram/sid_ram_6_1,ram_in(1),clk,'0','0',ram/sid_ram_6_1_CE);
+ram/sid_ram_6_1_CE <= (NOT write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_6_2: FDCPE port map (ram/sid_ram_6_2,ram_in(2),clk,'0','0',ram/sid_ram_6_2_CE);
+ram/sid_ram_6_2_CE <= (NOT write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_6_3: FDCPE port map (ram/sid_ram_6_3,ram_in(3),clk,'0','0',ram/sid_ram_6_3_CE);
+ram/sid_ram_6_3_CE <= (NOT write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_6_4: FDCPE port map (ram/sid_ram_6_4,ram_in(4),clk,'0','0',ram/sid_ram_6_4_CE);
+ram/sid_ram_6_4_CE <= (NOT write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_6_5: FDCPE port map (ram/sid_ram_6_5,ram_in(5),clk,'0','0',ram/sid_ram_6_5_CE);
+ram/sid_ram_6_5_CE <= (NOT write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_6_6: FDCPE port map (ram/sid_ram_6_6,ram_in(6),clk,'0','0',ram/sid_ram_6_6_CE);
+ram/sid_ram_6_6_CE <= (NOT write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_6_7: FDCPE port map (ram/sid_ram_6_7,ram_in(7),clk,'0','0',ram/sid_ram_6_7_CE);
+ram/sid_ram_6_7_CE <= (NOT write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_7_0: FDCPE port map (ram/sid_ram_7_0,ram_in(0),clk,'0','0',ram/sid_ram_7_0_CE);
+ram/sid_ram_7_0_CE <= (write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_7_1: FDCPE port map (ram/sid_ram_7_1,ram_in(1),clk,'0','0',ram/sid_ram_7_1_CE);
+ram/sid_ram_7_1_CE <= (write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_7_2: FDCPE port map (ram/sid_ram_7_2,ram_in(2),clk,'0','0',ram/sid_ram_7_2_CE);
+ram/sid_ram_7_2_CE <= (write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_7_3: FDCPE port map (ram/sid_ram_7_3,ram_in(3),clk,'0','0',ram/sid_ram_7_3_CE);
+ram/sid_ram_7_3_CE <= (write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_7_4: FDCPE port map (ram/sid_ram_7_4,ram_in(4),clk,'0','0',ram/sid_ram_7_4_CE);
+ram/sid_ram_7_4_CE <= (write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_7_5: FDCPE port map (ram/sid_ram_7_5,ram_in(5),clk,'0','0',ram/sid_ram_7_5_CE);
+ram/sid_ram_7_5_CE <= (write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_7_6: FDCPE port map (ram/sid_ram_7_6,ram_in(6),clk,'0','0',ram/sid_ram_7_6_CE);
+ram/sid_ram_7_6_CE <= (write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_7_7: FDCPE port map (ram/sid_ram_7_7,ram_in(7),clk,'0','0',ram/sid_ram_7_7_CE);
+ram/sid_ram_7_7_CE <= (write_addr(0) AND write_addr(1) AND write_addr(2) AND 
+	NOT write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_8_0: FDCPE port map (ram/sid_ram_8_0,ram_in(0),clk,'0','0',ram/sid_ram_8_0_CE);
+ram/sid_ram_8_0_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_8_1: FDCPE port map (ram/sid_ram_8_1,ram_in(1),clk,'0','0',ram/sid_ram_8_1_CE);
+ram/sid_ram_8_1_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_8_2: FDCPE port map (ram/sid_ram_8_2,ram_in(2),clk,'0','0',ram/sid_ram_8_2_CE);
+ram/sid_ram_8_2_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_8_3: FDCPE port map (ram/sid_ram_8_3,ram_in(3),clk,'0','0',ram/sid_ram_8_3_CE);
+ram/sid_ram_8_3_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_8_4: FDCPE port map (ram/sid_ram_8_4,ram_in(4),clk,'0','0',ram/sid_ram_8_4_CE);
+ram/sid_ram_8_4_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_8_5: FDCPE port map (ram/sid_ram_8_5,ram_in(5),clk,'0','0',ram/sid_ram_8_5_CE);
+ram/sid_ram_8_5_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_8_6: FDCPE port map (ram/sid_ram_8_6,ram_in(6),clk,'0','0',ram/sid_ram_8_6_CE);
+ram/sid_ram_8_6_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_8_7: FDCPE port map (ram/sid_ram_8_7,ram_in(7),clk,'0','0',ram/sid_ram_8_7_CE);
+ram/sid_ram_8_7_CE <= (NOT write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_9_0: FDCPE port map (ram/sid_ram_9_0,ram_in(0),clk,'0','0',ram/sid_ram_9_0_CE);
+ram/sid_ram_9_0_CE <= (write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_9_1: FDCPE port map (ram/sid_ram_9_1,ram_in(1),clk,'0','0',ram/sid_ram_9_1_CE);
+ram/sid_ram_9_1_CE <= (write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_9_2: FDCPE port map (ram/sid_ram_9_2,ram_in(2),clk,'0','0',ram/sid_ram_9_2_CE);
+ram/sid_ram_9_2_CE <= (write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_9_3: FDCPE port map (ram/sid_ram_9_3,ram_in(3),clk,'0','0',ram/sid_ram_9_3_CE);
+ram/sid_ram_9_3_CE <= (write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_9_4: FDCPE port map (ram/sid_ram_9_4,ram_in(4),clk,'0','0',ram/sid_ram_9_4_CE);
+ram/sid_ram_9_4_CE <= (write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_9_5: FDCPE port map (ram/sid_ram_9_5,ram_in(5),clk,'0','0',ram/sid_ram_9_5_CE);
+ram/sid_ram_9_5_CE <= (write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_9_6: FDCPE port map (ram/sid_ram_9_6,ram_in(6),clk,'0','0',ram/sid_ram_9_6_CE);
+ram/sid_ram_9_6_CE <= (write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
+
+FDCPE_ram/sid_ram_9_7: FDCPE port map (ram/sid_ram_9_7,ram_in(7),clk,'0','0',ram/sid_ram_9_7_CE);
+ram/sid_ram_9_7_CE <= (write_addr(0) AND NOT write_addr(1) AND NOT write_addr(2) AND 
+	write_addr(3) AND NOT write_addr(4) AND write_en);
 
 FDCPE_ram_in0: FDCPE port map (ram_in(0),spi/mosi_r(1),clk,'0','0',ram_in_CE(0));
-ram_in_CE(0) <= (spi/bit_cnt(0) AND spi/bit_cnt(1) AND spi/bit_cnt(2) AND 
-	spi/sclk_r(1) AND NOT spi/sclk_r(2) AND led_d2);
+ram_in_CE(0) <= (NOT spi/ss_r(1) AND spi/bit_cnt(0) AND spi/bit_cnt(1) AND 
+	spi/bit_cnt(2) AND spi/sclk_r(1) AND NOT spi/sclk_r(2) AND rst_n);
 
+FDCPE_ram_in1: FDCPE port map (ram_in(1),spi/tmp(0),clk,'0','0',ram_in_CE(1));
+ram_in_CE(1) <= (NOT spi/ss_r(1) AND spi/bit_cnt(0) AND spi/bit_cnt(1) AND 
+	spi/bit_cnt(2) AND spi/sclk_r(1) AND NOT spi/sclk_r(2) AND rst_n);
 
-sid_addr(0) <= '0';
+FDCPE_ram_in2: FDCPE port map (ram_in(2),spi/tmp(1),clk,'0','0',ram_in_CE(2));
+ram_in_CE(2) <= (NOT spi/ss_r(1) AND spi/bit_cnt(0) AND spi/bit_cnt(1) AND 
+	spi/bit_cnt(2) AND spi/sclk_r(1) AND NOT spi/sclk_r(2) AND rst_n);
 
+FDCPE_ram_in3: FDCPE port map (ram_in(3),spi/tmp(2),clk,'0','0',ram_in_CE(3));
+ram_in_CE(3) <= (NOT spi/ss_r(1) AND spi/bit_cnt(0) AND spi/bit_cnt(1) AND 
+	spi/bit_cnt(2) AND spi/sclk_r(1) AND NOT spi/sclk_r(2) AND rst_n);
 
-sid_addr(1) <= '0';
+FDCPE_ram_in4: FDCPE port map (ram_in(4),spi/tmp(3),clk,'0','0',ram_in_CE(4));
+ram_in_CE(4) <= (NOT spi/ss_r(1) AND spi/bit_cnt(0) AND spi/bit_cnt(1) AND 
+	spi/bit_cnt(2) AND spi/sclk_r(1) AND NOT spi/sclk_r(2) AND rst_n);
 
+FDCPE_ram_in5: FDCPE port map (ram_in(5),spi/tmp(4),clk,'0','0',ram_in_CE(5));
+ram_in_CE(5) <= (NOT spi/ss_r(1) AND spi/bit_cnt(0) AND spi/bit_cnt(1) AND 
+	spi/bit_cnt(2) AND spi/sclk_r(1) AND NOT spi/sclk_r(2) AND rst_n);
 
-sid_addr(2) <= '0';
+FDCPE_ram_in6: FDCPE port map (ram_in(6),spi/tmp(5),clk,'0','0',ram_in_CE(6));
+ram_in_CE(6) <= (NOT spi/ss_r(1) AND spi/bit_cnt(0) AND spi/bit_cnt(1) AND 
+	spi/bit_cnt(2) AND spi/sclk_r(1) AND NOT spi/sclk_r(2) AND rst_n);
 
+FDCPE_ram_in7: FDCPE port map (ram_in(7),spi/tmp(6),clk,'0','0',ram_in_CE(7));
+ram_in_CE(7) <= (NOT spi/ss_r(1) AND spi/bit_cnt(0) AND spi/bit_cnt(1) AND 
+	spi/bit_cnt(2) AND spi/sclk_r(1) AND NOT spi/sclk_r(2) AND rst_n);
 
-sid_addr(3) <= '0';
-
-
-sid_addr(4) <= '0';
-
-FTCPE_sid_clk: FTCPE port map (sid_clk,'1',clk,'0','0',sid_clk_CE);
-sid_clk_CE <= (divider/clk_counter(0) AND NOT divider/clk_counter(1) AND 
-	NOT divider/clk_counter(2) AND divider/clk_counter(3));
-
-
-sid_cs <= '0';
-
-FDCPE_sid_data0: FDCPE port map (sid_data(0),ram_in(0),clk,'0','0',sid_data_CE(0));
-sid_data_CE(0) <= (write_en AND NOT write_addr(0) AND NOT write_addr(1) AND 
-	NOT write_addr(2) AND NOT write_addr(3) AND NOT write_addr(4));
-
-
-sid_data(1) <= '0';
-
-
-sid_data(2) <= '0';
-
-
-sid_data(3) <= '0';
-
-
-sid_data(4) <= '0';
-
-
-sid_data(5) <= '0';
-
-
-sid_data(6) <= '0';
-
-
-sid_data(7) <= '0';
-
-
-sid_rw <= '0';
-
-FTCPE_spi/bit_cnt0: FTCPE port map (spi/bit_cnt(0),spi/bit_cnt_T(0),clk,'0','0');
-spi/bit_cnt_T(0) <= ((spi/bit_cnt(0) AND NOT led_d2)
-	OR (spi/sclk_r(1) AND NOT spi/sclk_r(2) AND led_d2));
+FDCPE_spi/bit_cnt0: FDCPE port map (spi/bit_cnt(0),spi/bit_cnt_D(0),clk,'0','0');
+spi/bit_cnt_D(0) <= ((NOT spi/ss_r(1) AND spi/bit_cnt(0) AND NOT spi/sclk_r(1) AND 
+	rst_n)
+	OR (NOT spi/ss_r(1) AND spi/bit_cnt(0) AND spi/sclk_r(2) AND 
+	rst_n)
+	OR (NOT spi/ss_r(1) AND NOT spi/bit_cnt(0) AND spi/sclk_r(1) AND 
+	NOT spi/sclk_r(2) AND rst_n));
 
 FTCPE_spi/bit_cnt1: FTCPE port map (spi/bit_cnt(1),spi/bit_cnt_T(1),clk,'0','0');
-spi/bit_cnt_T(1) <= ((spi/bit_cnt(1) AND NOT led_d2)
-	OR (spi/bit_cnt(0) AND spi/sclk_r(1) AND NOT spi/sclk_r(2) AND 
-	led_d2));
+spi/bit_cnt_T(1) <= ((NOT spi/ss_r(1) AND spi/bit_cnt(0) AND spi/sclk_r(1) AND 
+	NOT spi/sclk_r(2) AND rst_n)
+	OR (spi/bit_cnt(1) AND NOT rst_n)
+	OR (spi/ss_r(1) AND spi/bit_cnt(1)));
 
 FTCPE_spi/bit_cnt2: FTCPE port map (spi/bit_cnt(2),spi/bit_cnt_T(2),clk,'0','0');
-spi/bit_cnt_T(2) <= ((spi/bit_cnt(2) AND NOT led_d2)
-	OR (spi/bit_cnt(0) AND spi/bit_cnt(1) AND spi/sclk_r(1) AND 
-	NOT spi/sclk_r(2) AND led_d2));
+spi/bit_cnt_T(2) <= ((NOT spi/ss_r(1) AND spi/bit_cnt(0) AND spi/bit_cnt(1) AND 
+	spi/sclk_r(1) AND NOT spi/sclk_r(2) AND rst_n)
+	OR (spi/bit_cnt(2) AND NOT rst_n)
+	OR (spi/ss_r(1) AND spi/bit_cnt(2)));
 
 FTCPE_spi/bit_cnt3: FTCPE port map (spi/bit_cnt(3),spi/bit_cnt_T(3),clk,'0','0');
-spi/bit_cnt_T(3) <= ((spi/bit_cnt(3) AND NOT led_d2)
-	OR (spi/bit_cnt(0) AND spi/bit_cnt(1) AND spi/bit_cnt(2) AND 
-	spi/sclk_r(1) AND NOT spi/sclk_r(2) AND led_d2));
+spi/bit_cnt_T(3) <= ((NOT spi/ss_r(1) AND spi/bit_cnt(0) AND spi/bit_cnt(1) AND 
+	spi/bit_cnt(2) AND spi/sclk_r(1) AND NOT spi/sclk_r(2) AND rst_n)
+	OR (spi/bit_cnt(3) AND NOT rst_n)
+	OR (spi/ss_r(1) AND spi/bit_cnt(3)));
 
 FTCPE_spi/bit_cnt4: FTCPE port map (spi/bit_cnt(4),spi/bit_cnt_T(4),clk,'0','0');
-spi/bit_cnt_T(4) <= ((spi/bit_cnt(4) AND NOT led_d2)
-	OR (spi/bit_cnt(0) AND spi/bit_cnt(1) AND spi/bit_cnt(2) AND 
-	spi/bit_cnt(3) AND spi/sclk_r(1) AND NOT spi/sclk_r(2) AND led_d2));
+spi/bit_cnt_T(4) <= ((NOT spi/ss_r(1) AND spi/bit_cnt(0) AND spi/bit_cnt(1) AND 
+	spi/bit_cnt(2) AND spi/bit_cnt(3) AND spi/sclk_r(1) AND NOT spi/sclk_r(2) AND 
+	rst_n)
+	OR (spi/bit_cnt(4) AND NOT rst_n)
+	OR (spi/ss_r(1) AND spi/bit_cnt(4)));
 
 FTCPE_spi/bit_cnt5: FTCPE port map (spi/bit_cnt(5),spi/bit_cnt_T(5),clk,'0','0');
-spi/bit_cnt_T(5) <= ((spi/bit_cnt(5) AND NOT led_d2)
-	OR (spi/bit_cnt(0) AND spi/bit_cnt(1) AND spi/bit_cnt(2) AND 
-	spi/bit_cnt(3) AND spi/bit_cnt(4) AND spi/sclk_r(1) AND NOT spi/sclk_r(2) AND 
-	led_d2));
+spi/bit_cnt_T(5) <= ((NOT spi/ss_r(1) AND spi/bit_cnt(0) AND spi/bit_cnt(1) AND 
+	spi/bit_cnt(2) AND spi/bit_cnt(3) AND spi/bit_cnt(4) AND spi/sclk_r(1) AND 
+	NOT spi/sclk_r(2) AND rst_n)
+	OR (spi/bit_cnt(5) AND NOT rst_n)
+	OR (spi/ss_r(1) AND spi/bit_cnt(5)));
 
 FTCPE_spi/bit_cnt6: FTCPE port map (spi/bit_cnt(6),spi/bit_cnt_T(6),clk,'0','0');
-spi/bit_cnt_T(6) <= ((spi/bit_cnt(6) AND NOT led_d2)
-	OR (spi/bit_cnt(0) AND spi/bit_cnt(1) AND spi/bit_cnt(2) AND 
-	spi/bit_cnt(3) AND spi/bit_cnt(4) AND spi/bit_cnt(5) AND spi/sclk_r(1) AND 
-	NOT spi/sclk_r(2) AND led_d2));
+spi/bit_cnt_T(6) <= ((NOT spi/ss_r(1) AND spi/bit_cnt(0) AND spi/bit_cnt(1) AND 
+	spi/bit_cnt(2) AND spi/bit_cnt(3) AND spi/bit_cnt(4) AND spi/bit_cnt(5) AND 
+	spi/sclk_r(1) AND NOT spi/sclk_r(2) AND rst_n)
+	OR (spi/bit_cnt(6) AND NOT rst_n)
+	OR (spi/ss_r(1) AND spi/bit_cnt(6)));
 
 FTCPE_spi/bit_cnt7: FTCPE port map (spi/bit_cnt(7),spi/bit_cnt_T(7),clk,'0','0');
-spi/bit_cnt_T(7) <= ((spi/bit_cnt(7) AND NOT led_d2)
+spi/bit_cnt_T(7) <= ((NOT spi/ss_r(1) AND spi/bit_cnt(0) AND spi/bit_cnt(1) AND 
+	spi/bit_cnt(2) AND spi/bit_cnt(3) AND spi/bit_cnt(4) AND spi/bit_cnt(5) AND 
+	spi/bit_cnt(6) AND spi/sclk_r(1) AND NOT spi/sclk_r(2) AND rst_n)
+	OR (spi/bit_cnt(7) AND NOT rst_n)
+	OR (spi/ss_r(1) AND spi/bit_cnt(7)));
+
+FDCPE_spi/mosi_r0: FDCPE port map (spi/mosi_r(0),mosi,clk,'0','0',rst_n);
+
+FDCPE_spi/mosi_r1: FDCPE port map (spi/mosi_r(1),spi/mosi_r(0),clk,'0','0',rst_n);
+
+FDCPE_spi/sclk_r0: FDCPE port map (spi/sclk_r(0),sclk,clk,'0','0',rst_n);
+
+FDCPE_spi/sclk_r1: FDCPE port map (spi/sclk_r(1),spi/sclk_r(0),clk,'0','0',rst_n);
+
+FDCPE_spi/sclk_r2: FDCPE port map (spi/sclk_r(2),spi/sclk_r(1),clk,'0','0',rst_n);
+
+FDCPE_spi/ss_r0: FDCPE port map (spi/ss_r(0),ss,clk,'0','0',rst_n);
+
+FDCPE_spi/ss_r1: FDCPE port map (spi/ss_r(1),spi/ss_r(0),clk,'0','0',rst_n);
+
+FDCPE_spi/ss_r2: FDCPE port map (spi/ss_r(2),spi/ss_r(1),clk,'0','0',rst_n);
+
+FDCPE_spi/tmp0: FDCPE port map (spi/tmp(0),spi/tmp_D(0),clk,'0','0');
+spi/tmp_D(0) <= ((NOT spi/sclk_r(1) AND spi/tmp(0) AND rst_n)
+	OR (spi/tmp(0) AND spi/sclk_r(2) AND rst_n)
+	OR (spi/ss_r(1) AND spi/tmp(0) AND rst_n)
 	OR (spi/bit_cnt(0) AND spi/bit_cnt(1) AND spi/bit_cnt(2) AND 
-	spi/bit_cnt(3) AND spi/bit_cnt(4) AND spi/bit_cnt(5) AND spi/bit_cnt(6) AND 
-	spi/sclk_r(1) AND NOT spi/sclk_r(2) AND led_d2));
+	spi/tmp(0) AND rst_n)
+	OR (NOT spi/ss_r(1) AND NOT spi/bit_cnt(0) AND spi/mosi_r(1) AND 
+	spi/sclk_r(1) AND NOT spi/sclk_r(2) AND rst_n)
+	OR (NOT spi/ss_r(1) AND NOT spi/bit_cnt(1) AND spi/mosi_r(1) AND 
+	spi/sclk_r(1) AND NOT spi/sclk_r(2) AND rst_n)
+	OR (NOT spi/ss_r(1) AND NOT spi/bit_cnt(2) AND spi/mosi_r(1) AND 
+	spi/sclk_r(1) AND NOT spi/sclk_r(2) AND rst_n));
 
-FDCPE_spi/mosi_r0: FDCPE port map (spi/mosi_r(0),mosi,clk,'0','0');
+FDCPE_spi/tmp1: FDCPE port map (spi/tmp(1),spi/tmp_D(1),clk,'0','0');
+spi/tmp_D(1) <= ((NOT spi/sclk_r(1) AND spi/tmp(1) AND rst_n)
+	OR (spi/tmp(1) AND spi/sclk_r(2) AND rst_n)
+	OR (spi/ss_r(1) AND spi/tmp(1) AND rst_n)
+	OR (spi/bit_cnt(0) AND spi/bit_cnt(1) AND spi/bit_cnt(2) AND 
+	spi/tmp(1) AND rst_n)
+	OR (NOT spi/ss_r(1) AND NOT spi/bit_cnt(0) AND spi/sclk_r(1) AND 
+	spi/tmp(0) AND NOT spi/sclk_r(2) AND rst_n)
+	OR (NOT spi/ss_r(1) AND NOT spi/bit_cnt(1) AND spi/sclk_r(1) AND 
+	spi/tmp(0) AND NOT spi/sclk_r(2) AND rst_n)
+	OR (NOT spi/ss_r(1) AND NOT spi/bit_cnt(2) AND spi/sclk_r(1) AND 
+	spi/tmp(0) AND NOT spi/sclk_r(2) AND rst_n));
 
-FDCPE_spi/mosi_r1: FDCPE port map (spi/mosi_r(1),spi/mosi_r(0),clk,'0','0');
+FDCPE_spi/tmp2: FDCPE port map (spi/tmp(2),spi/tmp_D(2),clk,'0','0');
+spi/tmp_D(2) <= ((NOT spi/sclk_r(1) AND spi/tmp(2) AND rst_n)
+	OR (spi/tmp(2) AND spi/sclk_r(2) AND rst_n)
+	OR (spi/ss_r(1) AND spi/tmp(2) AND rst_n)
+	OR (spi/bit_cnt(0) AND spi/bit_cnt(1) AND spi/bit_cnt(2) AND 
+	spi/tmp(2) AND rst_n)
+	OR (NOT spi/ss_r(1) AND NOT spi/bit_cnt(0) AND spi/sclk_r(1) AND 
+	spi/tmp(1) AND NOT spi/sclk_r(2) AND rst_n)
+	OR (NOT spi/ss_r(1) AND NOT spi/bit_cnt(1) AND spi/sclk_r(1) AND 
+	spi/tmp(1) AND NOT spi/sclk_r(2) AND rst_n)
+	OR (NOT spi/ss_r(1) AND NOT spi/bit_cnt(2) AND spi/sclk_r(1) AND 
+	spi/tmp(1) AND NOT spi/sclk_r(2) AND rst_n));
 
-FDCPE_spi/sclk_r0: FDCPE port map (spi/sclk_r(0),sclk,clk,'0','0');
+FDCPE_spi/tmp3: FDCPE port map (spi/tmp(3),spi/tmp_D(3),clk,'0','0');
+spi/tmp_D(3) <= ((NOT spi/sclk_r(1) AND spi/tmp(3) AND rst_n)
+	OR (spi/tmp(3) AND spi/sclk_r(2) AND rst_n)
+	OR (spi/ss_r(1) AND spi/tmp(3) AND rst_n)
+	OR (spi/bit_cnt(0) AND spi/bit_cnt(1) AND spi/bit_cnt(2) AND 
+	spi/tmp(3) AND rst_n)
+	OR (NOT spi/ss_r(1) AND NOT spi/bit_cnt(0) AND spi/sclk_r(1) AND 
+	spi/tmp(2) AND NOT spi/sclk_r(2) AND rst_n)
+	OR (NOT spi/ss_r(1) AND NOT spi/bit_cnt(1) AND spi/sclk_r(1) AND 
+	spi/tmp(2) AND NOT spi/sclk_r(2) AND rst_n)
+	OR (NOT spi/ss_r(1) AND NOT spi/bit_cnt(2) AND spi/sclk_r(1) AND 
+	spi/tmp(2) AND NOT spi/sclk_r(2) AND rst_n));
 
-FDCPE_spi/sclk_r1: FDCPE port map (spi/sclk_r(1),spi/sclk_r(0),clk,'0','0');
+FDCPE_spi/tmp4: FDCPE port map (spi/tmp(4),spi/tmp_D(4),clk,'0','0');
+spi/tmp_D(4) <= ((NOT spi/sclk_r(1) AND spi/tmp(4) AND rst_n)
+	OR (spi/tmp(4) AND spi/sclk_r(2) AND rst_n)
+	OR (spi/ss_r(1) AND spi/tmp(4) AND rst_n)
+	OR (spi/bit_cnt(0) AND spi/bit_cnt(1) AND spi/bit_cnt(2) AND 
+	spi/tmp(4) AND rst_n)
+	OR (NOT spi/ss_r(1) AND NOT spi/bit_cnt(0) AND spi/sclk_r(1) AND 
+	spi/tmp(3) AND NOT spi/sclk_r(2) AND rst_n)
+	OR (NOT spi/ss_r(1) AND NOT spi/bit_cnt(1) AND spi/sclk_r(1) AND 
+	spi/tmp(3) AND NOT spi/sclk_r(2) AND rst_n)
+	OR (NOT spi/ss_r(1) AND NOT spi/bit_cnt(2) AND spi/sclk_r(1) AND 
+	spi/tmp(3) AND NOT spi/sclk_r(2) AND rst_n));
 
-FDCPE_spi/sclk_r2: FDCPE port map (spi/sclk_r(2),spi/sclk_r(1),clk,'0','0');
+FDCPE_spi/tmp5: FDCPE port map (spi/tmp(5),spi/tmp_D(5),clk,'0','0');
+spi/tmp_D(5) <= ((NOT spi/sclk_r(1) AND spi/tmp(5) AND rst_n)
+	OR (spi/tmp(5) AND spi/sclk_r(2) AND rst_n)
+	OR (spi/ss_r(1) AND spi/tmp(5) AND rst_n)
+	OR (spi/bit_cnt(0) AND spi/bit_cnt(1) AND spi/bit_cnt(2) AND 
+	spi/tmp(5) AND rst_n)
+	OR (NOT spi/ss_r(1) AND NOT spi/bit_cnt(0) AND spi/sclk_r(1) AND 
+	spi/tmp(4) AND NOT spi/sclk_r(2) AND rst_n)
+	OR (NOT spi/ss_r(1) AND NOT spi/bit_cnt(1) AND spi/sclk_r(1) AND 
+	spi/tmp(4) AND NOT spi/sclk_r(2) AND rst_n)
+	OR (NOT spi/ss_r(1) AND NOT spi/bit_cnt(2) AND spi/sclk_r(1) AND 
+	spi/tmp(4) AND NOT spi/sclk_r(2) AND rst_n));
 
-FDCPE_spi/ss_r0: FDCPE port map (spi/ss_r(0),ss,clk,'0','0');
+FDCPE_spi/tmp6: FDCPE port map (spi/tmp(6),spi/tmp_D(6),clk,'0','0');
+spi/tmp_D(6) <= ((NOT spi/sclk_r(1) AND spi/tmp(6) AND rst_n)
+	OR (spi/sclk_r(2) AND spi/tmp(6) AND rst_n)
+	OR (spi/ss_r(1) AND spi/tmp(6) AND rst_n)
+	OR (spi/bit_cnt(0) AND spi/bit_cnt(1) AND spi/bit_cnt(2) AND 
+	spi/tmp(6) AND rst_n)
+	OR (NOT spi/ss_r(1) AND NOT spi/bit_cnt(0) AND spi/sclk_r(1) AND 
+	spi/tmp(5) AND NOT spi/sclk_r(2) AND rst_n)
+	OR (NOT spi/ss_r(1) AND NOT spi/bit_cnt(1) AND spi/sclk_r(1) AND 
+	spi/tmp(5) AND NOT spi/sclk_r(2) AND rst_n)
+	OR (NOT spi/ss_r(1) AND NOT spi/bit_cnt(2) AND spi/sclk_r(1) AND 
+	spi/tmp(5) AND NOT spi/sclk_r(2) AND rst_n));
 
 FDCPE_write_addr0: FDCPE port map (write_addr(0),spi/bit_cnt(3),clk,'0','0',write_addr_CE(0));
-write_addr_CE(0) <= (spi/bit_cnt(0) AND spi/bit_cnt(1) AND spi/bit_cnt(2) AND 
-	spi/sclk_r(1) AND NOT spi/sclk_r(2) AND led_d2);
+write_addr_CE(0) <= (NOT spi/ss_r(1) AND spi/bit_cnt(0) AND spi/bit_cnt(1) AND 
+	spi/bit_cnt(2) AND spi/sclk_r(1) AND NOT spi/sclk_r(2) AND rst_n);
 
 FDCPE_write_addr1: FDCPE port map (write_addr(1),spi/bit_cnt(4),clk,'0','0',write_addr_CE(1));
-write_addr_CE(1) <= (spi/bit_cnt(0) AND spi/bit_cnt(1) AND spi/bit_cnt(2) AND 
-	spi/sclk_r(1) AND NOT spi/sclk_r(2) AND led_d2);
+write_addr_CE(1) <= (NOT spi/ss_r(1) AND spi/bit_cnt(0) AND spi/bit_cnt(1) AND 
+	spi/bit_cnt(2) AND spi/sclk_r(1) AND NOT spi/sclk_r(2) AND rst_n);
 
 FDCPE_write_addr2: FDCPE port map (write_addr(2),spi/bit_cnt(5),clk,'0','0',write_addr_CE(2));
-write_addr_CE(2) <= (spi/bit_cnt(0) AND spi/bit_cnt(1) AND spi/bit_cnt(2) AND 
-	spi/sclk_r(1) AND NOT spi/sclk_r(2) AND led_d2);
+write_addr_CE(2) <= (NOT spi/ss_r(1) AND spi/bit_cnt(0) AND spi/bit_cnt(1) AND 
+	spi/bit_cnt(2) AND spi/sclk_r(1) AND NOT spi/sclk_r(2) AND rst_n);
 
 FDCPE_write_addr3: FDCPE port map (write_addr(3),spi/bit_cnt(6),clk,'0','0',write_addr_CE(3));
-write_addr_CE(3) <= (spi/bit_cnt(0) AND spi/bit_cnt(1) AND spi/bit_cnt(2) AND 
-	spi/sclk_r(1) AND NOT spi/sclk_r(2) AND led_d2);
+write_addr_CE(3) <= (NOT spi/ss_r(1) AND spi/bit_cnt(0) AND spi/bit_cnt(1) AND 
+	spi/bit_cnt(2) AND spi/sclk_r(1) AND NOT spi/sclk_r(2) AND rst_n);
 
 FDCPE_write_addr4: FDCPE port map (write_addr(4),spi/bit_cnt(7),clk,'0','0',write_addr_CE(4));
-write_addr_CE(4) <= (spi/bit_cnt(0) AND spi/bit_cnt(1) AND spi/bit_cnt(2) AND 
-	spi/sclk_r(1) AND NOT spi/sclk_r(2) AND led_d2);
+write_addr_CE(4) <= (NOT spi/ss_r(1) AND spi/bit_cnt(0) AND spi/bit_cnt(1) AND 
+	spi/bit_cnt(2) AND spi/sclk_r(1) AND NOT spi/sclk_r(2) AND rst_n);
 
-FDCPE_write_en: FDCPE port map (write_en,write_en_D,clk,'0','0');
-write_en_D <= (spi/bit_cnt(0) AND spi/bit_cnt(1) AND spi/bit_cnt(2) AND 
-	spi/sclk_r(1) AND NOT spi/sclk_r(2) AND led_d2);
+FDCPE_write_en: FDCPE port map (write_en,write_en_D,clk,'0','0',rst_n);
+write_en_D <= (NOT spi/ss_r(1) AND spi/bit_cnt(0) AND spi/bit_cnt(1) AND 
+	spi/bit_cnt(2) AND spi/sclk_r(1) AND NOT spi/sclk_r(2));
 
 Register Legend:
  FDCPE (Q,D,C,CLR,PRE,CE); 
  FTCPE (Q,D,C,CLR,PRE,CE); 
  LDCP  (Q,D,G,CLR,PRE); 
 
-******************************  Device Pin Out *****************************
-
-Device : XC9572XL-10-VQ44
-
-
-   --------------------------------  
-  /44 43 42 41 40 39 38 37 36 35 34 \
- | 1                             33 | 
- | 2                             32 | 
- | 3                             31 | 
- | 4                             30 | 
- | 5        XC9572XL-10-VQ44     29 | 
- | 6                             28 | 
- | 7                             27 | 
- | 8                             26 | 
- | 9                             25 | 
- | 10                            24 | 
- | 11                            23 | 
- \ 12 13 14 15 16 17 18 19 20 21 22 /
-   --------------------------------  
-
-
-Pin Signal                         Pin Signal                        
-No. Name                           No. Name                          
-  1 clk                              23 sid_data<7>                   
-  2 KPR                              24 TDO                           
-  3 sid_clk                          25 GND                           
-  4 GND                              26 VCC                           
-  5 sid_cs                           27 KPR                           
-  6 sid_data<3>                      28 sid_data<4>                   
-  7 sid_addr<3>                      29 sid_rw                        
-  8 KPR                              30 sid_data<5>                   
-  9 TDI                              31 sid_data<2>                   
- 10 TMS                              32 sid_data<1>                   
- 11 TCK                              33 mosi                          
- 12 sid_addr<1>                      34 sclk                          
- 13 KPR                              35 VCC                           
- 14 sid_addr<0>                      36 KPR                           
- 15 VCC                              37 KPR                           
- 16 sid_data<6>                      38 led_d2                        
- 17 GND                              39 led_d1                        
- 18 KPR                              40 KPR                           
- 19 KPR                              41 sid_data<0>                   
- 20 sid_addr<4>                      42 KPR                           
- 21 sid_addr<2>                      43 KPR                           
- 22 ss                               44 KPR                           
-
-
-Legend :  NC  = Not Connected, unbonded pin
-         PGND = Unused I/O configured as additional Ground pin
-         TIE  = Unused I/O floating -- must tie to VCC, GND or other signal
-         KPR  = Unused I/O with weak keeper (leave unconnected)
-         VCC  = Dedicated Power Pin
-         GND  = Dedicated Ground Pin
-         TDI  = Test Data In, JTAG pin
-         TDO  = Test Data Out, JTAG pin
-         TCK  = Test Clock, JTAG pin
-         TMS  = Test Mode Select, JTAG pin
-  PROHIBITED  = User reserved pin
 ****************************  Compiler Options  ****************************
 
 Following is a list of all global compiler options used by the fitter run.

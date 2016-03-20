@@ -8,7 +8,7 @@
 
 module espSID_top(
     input clk,  // 20MHz CPLD clock
-    input rst,
+    input rst_n,    // active low reset
     output led_d1,
     output led_d2,
     output sid_clk,  // SID lines: 1MHz clock out from clock_divider module
@@ -23,20 +23,24 @@ module espSID_top(
     );
 
     
+    
     wire [4:0] read_addr;
     wire [4:0] write_addr;
     wire [7:0] ram_in;
     wire [7:0] ram_out;
+    wire rst = ~rst_n;
     wire write_en;
     wire data_rdy;
+    wire sid_cs_active = (~|sid_cs);
 
-    assign sid_data = (~|sid_cs) ? ram_out[read_addr] : 8'bZ; // disconnect the ram wires from the bus if SID not selected
-    assign sid_addr = (~|sid_cs) ? read_addr : 5'bZ;
+    assign sid_data = sid_cs_active ? ram_out : 8'bZ; // disconnect the ram wires from the bus if SID not selected
+    assign sid_addr = sid_cs_active ? read_addr : 5'bZ;
 
     // The clock divider module creates the 1MHz clock for the SID
 
     clock_divider #(.SYS_CLK(20000000),.CLK_OUT(1000000)) divider(
         .clk        (clk),
+        .rst        (rst),
         .sid_clk    (sid_clk)
     );
     
@@ -55,6 +59,7 @@ module espSID_top(
 
     spi_slave spi(
         .clk        (clk),
+        .rst        (rst),
         .ss         (ss),
         .sclk       (sclk),
         .mosi       (mosi),
@@ -69,11 +74,13 @@ module espSID_top(
     
     sid_glue glue(
         .clk        (clk),
+        .rst        (rst),
         .sid_clk    (sid_clk),
         .data_rdy   (data_rdy),
         .addr       (read_addr),
         .sid_cs     (sid_cs),
         .sid_rw     (sid_rw),
+        .sid_rst    (sid_rst),
         .led_d1     (led_d1)
     );
         

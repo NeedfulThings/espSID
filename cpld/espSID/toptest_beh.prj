@@ -1,7 +1,0 @@
-verilog work "spi_slave.v"
-verilog work "sid_glue.v"
-verilog work "ram.v"
-verilog work "clock_divider.v"
-verilog work "espSID_top.v"
-verilog work "toptest.v"
-verilog work "C:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v"
