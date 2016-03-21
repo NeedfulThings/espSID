@@ -24,7 +24,7 @@
 #define SPI_SPEED 4000000 // the ESP SPI bus can clock up to 80MHz. 4MHz lets a logic probe Saleae see it for debug.
 
 const char* ssid     = "sangsom";
-const char* password = "***REMOVED***";
+const char* password = "****************************";
 
 uint8_t zero_frame[25] = {0};
 uint8_t sid_register[25] = {0}; // incoming SID register data
