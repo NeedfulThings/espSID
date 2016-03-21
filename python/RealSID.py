@@ -40,7 +40,7 @@ import socket
 from py65.devices import mpu6502
 from binascii import unhexlify
 
-XMIT_PKTS = 100
+XMIT_PKTS = 50
 TCP_IP = '192.168.9.33'
 TCP_PORT = 1337
 BUFFER_SIZE = 8

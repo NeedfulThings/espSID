@@ -1,5 +1,0 @@
-MO espSID_top NULL espSID_top.v vlg7A/esp_s_i_d__top.bin 1458367662
-MO clock_divider NULL clock_divider.v vlg1E/clock__divider.bin 1458367662
-MO ram NULL ram.v vlg74/ram.bin 1458367662
-MO sid_glue NULL sid_glue.v vlg10/sid__glue.bin 1458367662
-MO spi_slave NULL spi_slave.v vlg4A/spi__slave.bin 1458367662

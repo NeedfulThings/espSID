@@ -41,12 +41,14 @@ module newtest;
     always #5 clk = ~clk;
     
     always @(posedge clk) begin
-        $display($time, ": sid_ram %b, addr %b, data_in %b, ram_out %b, en %b", uut.ram.sid_ram, uut.ram.write_addr, uut.ram.ram_in, uut.ram.ram_out, uut.ram.write_en);
+        $display($time, ": sid_ram %b, addr %b, data_in %b, ram_out %b, en %b", 
+        uut.ram.sid_ram, uut.ram.write_addr, uut.ram.ram_in, uut.ram.ram_out, uut.ram.write_en);
         
-        $display($time, ": tmp %b, bit_cnt %d, write_en %b, addr %b, data %b, ss %b, data_rdy %b", uut.spi.tmp, uut.spi.bit_cnt, uut.spi.write_en, uut.spi.addr, uut.spi.data, uut.spi.ss, uut.data_rdy);
+        $display("SPI: tmp %b, bit_cnt %d, write_en %b, addr %b, data %b, ss %b, data_rdy %b", 
+        uut.spi.tmp, uut.spi.bit_cnt, uut.spi.write_en, uut.spi.addr, uut.spi.data, uut.spi.ss, uut.data_rdy);
         
-        $display($time, ": running %b, reg_cnt %b, data_ready %b, sid_clk %b%b, posedge %b", 
-        uut.glue.running, uut.glue.reg_cnt, uut.glue.data_rdy, uut.glue.sid_clk_q, uut.glue.sid_clk, uut.glue.sid_posedge);
+        $display("GLUE: running %b, reg_cnt %d, data_ready %b, sid_clk %b%b, posedge %b, ramout %b, last_frame %b", 
+        uut.glue.running, uut.glue.reg_cnt, uut.glue.data_rdy, uut.glue.sid_clk_q, uut.glue.sid_clk, uut.glue.sid_posedge, uut.glue.ram_out, uut.glue.last_frame[uut.glue.reg_cnt]);
         
         $display();
     end
@@ -94,7 +96,23 @@ module newtest;
 
         #5
         ss <= 1;
+        //mosi = ~mosi;   // setup for all identical bits to test compare 
+    
+        #10000
+        ss <= 0;
 
+        for (x = 0; x < 25; x = x+1) begin
+            mosi = ~mosi;
+            for (i = 0; i < 8; i = i+1) begin
+                #25
+                sclk <= 1;
+                #25
+                sclk <= 0;
+            end
+        end
+
+        #5
+        ss <= 1;
         
 	end
       

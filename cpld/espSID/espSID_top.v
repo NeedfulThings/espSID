@@ -23,7 +23,6 @@ module espSID_top(
     );
 
     
-    
     wire [4:0] read_addr;
     wire [4:0] write_addr;
     wire [7:0] ram_in;
@@ -35,6 +34,8 @@ module espSID_top(
 
     assign sid_data = sid_cs_active ? ram_out : 8'bZ; // disconnect the ram wires from the bus if SID not selected
     assign sid_addr = sid_cs_active ? read_addr : 5'bZ;
+    
+    assign led_d1 = rst;
 
     // The clock divider module creates the 1MHz clock for the SID
 
@@ -77,11 +78,11 @@ module espSID_top(
         .rst        (rst),
         .sid_clk    (sid_clk),
         .data_rdy   (data_rdy),
+        .ram_out    (ram_out),
         .addr       (read_addr),
         .sid_cs     (sid_cs),
         .sid_rw     (sid_rw),
-        .sid_rst    (sid_rst),
-        .led_d1     (led_d1)
+        .sid_rst    (sid_rst)
     );
         
 endmodule

@@ -22,7 +22,7 @@ module spi_slave(
     wire sclk_risingedge = (sclk_r[2:1]==2'b01); 
     wire sclk_fallingedge = (sclk_r[2:1]==2'b10);
     wire ss_active = ~ss_r[1];  // ss is active low
-    wire ss_startmessage = (ss_r[2:1]==2'b10);  // message starts at falling edge
+    // wire ss_startmessage = (ss_r[2:1]==2'b10);  // message starts at falling edge (unused)
     wire ss_endmessage = (ss_r[2:1]==2'b01);  // message stops at rising edge
     wire mosi_data = mosi_r[1];
         
@@ -33,13 +33,14 @@ module spi_slave(
             bit_cnt <= 1'b0;
             tmp <= 8'b0;
             led_d2 <= 1'b0;
+            write_en <= 1'b0;
         end 
         else begin
             sclk_r <= {sclk_r[1:0], sclk};  // update SPI edge detection registers
             ss_r <= {ss_r[1:0], ss};
             mosi_r <= {mosi_r[0], mosi};
             
-            write_en <= (write_en) ? 1'b0 : 1'b0;    // disable the write to RAM register if we used it last time
+            //write_en <= (write_en) ? 1'b0 : 1'b0;    // disable the write to RAM register if we used it last time
             
             if(~ss_active) begin  // reset count when we reach 200 bits and spi is done
                 bit_cnt <= 8'b0; 
@@ -53,6 +54,9 @@ module spi_slave(
                         write_en <= 1'b1;
                     end
                     else tmp <= {tmp[5:0], mosi_data};
+                end
+                else if (sclk_fallingedge) begin
+                    write_en <= 1'b0;
                 end
             end
         end

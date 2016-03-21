@@ -26,8 +26,8 @@
 const char* ssid     = "sangsom";
 const char* password = "***REMOVED***";
 
+uint8_t zero_frame[25] = {0};
 uint8_t sid_register[25] = {0}; // incoming SID register data
-uint8_t byte_cnt = 0;           // bytes received (25 = all SID registers)
 uint32_t frame_cnt = 0;         // how many frames have been received 
 bool req_more = false;          // flag that gets set when we need to ask for more frames
 
@@ -38,18 +38,16 @@ WiFiServer server(1337);  // Sets up a TCP server
 WiFiClient client;
 
 void sid_update(){
-  uint8_t foo[25]; 
+  uint8_t foo[25];
+  uint8_t frames_left; 
   reg_buf->pull(reg_buf, &foo); // Pull a frame off the buffer
   SPI.writeBytes(foo, 25);  // send the frame to the SPI bus
-  uint8_t frames_left = reg_buf->numElements(reg_buf); 
+  frames_left = reg_buf->numElements(reg_buf); 
   if (frames_left == LOW_FRAMES) {
-    // if we're low on frames set the bool to request more
-    Serial.printf("%u frames received, requesting more.", frame_cnt);
-    req_more = true;
+    req_more = true;  // if we're low on frames set the bool to request more
   }
-  else if (!frames_left) {
-    // if we've hit 0 frames in the buffer the playback is over
-    Serial.printf("Frame buffer exhausted. Turning off ticker.\n", frame_cnt);    
+  else if (!frames_left) {      // if we've hit 0 frames in the buffer the playback is over
+    SPI.writeBytes(zero_frame, 25);
     send_data.detach(); // if there's no frames left to play stop updates
     frame_cnt = 0;
   }
@@ -100,23 +98,16 @@ void loop() {
   } else {
 
     if (req_more) {
-      // First thing we need to do is ask for more data if the buffer is getting low
+      // Ask for more data if the buffer is getting low
       client.write("?");  
-      Serial.println(" Sent.");
       req_more = false;
     }
 
     if (client.available() > 0) {
-      sid_register[byte_cnt] = client.read();
-      //Serial.printf("%02x", sid_register[byte_cnt]);  // print recieved bytes for debug
-      if (++byte_cnt == 25) {
-        reg_buf->add(reg_buf, &sid_register);
-        //Serial.println();
-        byte_cnt = 0;
-        if (++frame_cnt == 50) {
-          Serial.printf("\n\nReceived 50 frames, starting playback\n");
-          send_data.attach(0.02, sid_update);
-        }
+      client.readBytes(sid_register, 25);
+      reg_buf->add(reg_buf, &sid_register);
+      if (++frame_cnt == 50) {
+        send_data.attach(0.02, sid_update);
       }
     }
   }
